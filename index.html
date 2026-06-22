@@ -774,6 +774,73 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* FAQ */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--p1); }
+
+    .faq-arrow {
+      font-size: 1rem;
+      color: var(--p1);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      display: inline-block;
+    }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-a.open { max-height: 300px; padding-bottom: 1.5rem; }
+    .faq-a p { color: var(--muted2); font-size: 0.93rem; line-height: 1.75; }
+
+    /* SCARCITY BADGE */
+    .scarcity-bar {
+      background: linear-gradient(135deg, rgba(168,85,247,0.12), rgba(236,72,153,0.08));
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .scarcity-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #f97316;
+      animation: pulse 1.5s infinite;
+      flex-shrink: 0;
+    }
+    .scarcity-bar span.hl { color: #f97316; font-weight: 800; }
+
     /* SVG ICONS */
     .ico-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
@@ -816,6 +883,7 @@
       <li><a href="#como">Como funciona</a></li>
       <li><a href="#portfolio">Portfólio</a></li>
       <li><a href="#planos">Planos</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li>
         <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Zeira23%20Studio%20e%20quero%20saber%20mais." target="_blank" rel="noopener" class="btn-nav-wpp">
           <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
@@ -991,6 +1059,9 @@
             <li><span class="ck">✓</span> Calendário editorial mensal com fotos, reels e legendas</li>
             <li><span class="ck">✓</span> Estratégia de crescimento orientada por dados reais</li>
           </ul>
+          <a href="https://www.instagram.com/allanisduarte/" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex; margin-top:0.5rem;">
+            Ver Allanis no Instagram →
+          </a>
         </div>
       </div>
     </div>
@@ -1003,6 +1074,10 @@
         <div class="tag">Investimento</div>
         <h2 class="section-h">Planos <span class="g">sem complicação</span></h2>
         <p class="section-sub" style="margin:0 auto;">Sem contrato longo. Sem taxa surpresa. Você paga pelo que precisa e para quando quiser.</p>
+      </div>
+      <div class="scarcity-bar reveal">
+        <div class="scarcity-dot"></div>
+        Apenas <span class="hl">2 vagas disponíveis</span> em julho · Clientes em lista de espera já aguardam
       </div>
       <div class="plans-grid">
 
@@ -1057,6 +1132,79 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="problema-bg" id="faq">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
+        <div class="tag">Perguntas frequentes</div>
+        <h2 class="section-h">Tudo que você <span class="g">quer saber</span></h2>
+      </div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Meus clientes vão saber que é inteligência artificial?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Não necessariamente. A qualidade visual das nossas influencers IA é indistinguível de uma pessoa real para o olho humano comum. Você decide se quer ser transparente sobre isso ou não — muitos clientes preferem manter discrição, outros usam isso como diferencial inovador da marca.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>É legal usar influencer IA para divulgar meu negócio?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Sim. O personagem é criado do zero, não copia nenhuma pessoa real existente. Não há violação de imagem ou direito autoral. Diversas marcas internacionais já usam avatares e influencers digitais como estratégia oficial de marketing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Preciso ter conta nas redes sociais ou vocês criam tudo?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Criamos tudo do zero — perfil, bio, foto, identidade visual e o sistema de postagem automática. Você só precisa nos dar o briefing do seu negócio. Se já tiver perfil, adaptamos o personagem para ele.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Quanto tempo leva para o personagem estar pronto e postando?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Em média 7 dias corridos da aprovação do briefing até o primeiro post no ar. A identidade visual (rosto, cabelo, estilo) fica pronta em 48h. O restante do prazo é para criar o banco de conteúdo inicial e configurar a automação.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Posso cancelar quando quiser?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Sim. Não há fidelidade ou multa de cancelamento. Você avisa com 30 dias de antecedência e encerramos sem burocracia. Todo o material produzido durante o contrato fica com você.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>O personagem é exclusivo ou pode ser usado por outro cliente?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>100% exclusivo. Cada influencer IA é criada especificamente para uma marca e nunca é reaproveitada ou cedida a outro cliente. O personagem é seu.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-inner reveal">
@@ -1087,6 +1235,20 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
     reveals.forEach(el => io.observe(el));
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q.open').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
+    }
 
     // Count up
     const counters = document.querySelectorAll('[data-count]');
