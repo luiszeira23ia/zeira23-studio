@@ -774,6 +774,101 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* NICHOS */
+    .nicho-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .nicho-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nicho-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .nicho-card:hover {
+      border-color: rgba(168,85,247,0.25);
+      transform: translateY(-4px);
+      background: var(--card2);
+    }
+    .nicho-card:hover::before { opacity: 1; }
+
+    .nicho-card-plus {
+      background: linear-gradient(145deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
+      border-color: rgba(168,85,247,0.3);
+    }
+    .nicho-card-plus::before { opacity: 1; }
+
+    .nicho-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .nicho-body h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .nicho-body p {
+      font-size: 0.83rem;
+      color: var(--muted2);
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
+    }
+
+    .nicho-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .nicho-tags span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--p1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+    }
+
+    .nicho-cta {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--p1);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nicho-cta:hover { color: var(--p2); }
+
+    @media (max-width: 900px) {
+      .nicho-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .nicho-grid { grid-template-columns: 1fr; }
+    }
+
     /* FAQ */
     .faq-list { max-width: 780px; margin: 0 auto; }
 
@@ -881,6 +976,7 @@
     <div class="nav-logo">Zeira23 Studio</div>
     <ul class="nav-links">
       <li><a href="#como">Como funciona</a></li>
+      <li><a href="#nichos">Nichos</a></li>
       <li><a href="#portfolio">Portfólio</a></li>
       <li><a href="#planos">Planos</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -1013,6 +1109,93 @@
           <h3>Postagem automática</h3>
           <p>Configuramos o sistema para publicar nos horários certos. Você não precisa fazer absolutamente nada.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NICHOS -->
+  <section id="nichos">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:1.5rem;">
+        <div class="tag">Para qualquer segmento</div>
+        <h2 class="section-h">Criamos para o <span class="g">nicho da sua marca</span></h2>
+        <p class="section-sub" style="margin:0 auto 1rem;">O personagem é desenvolvido com a identidade, estilo e linguagem que o seu público já consome. A fórmula é simples: <strong style="color:var(--text)">identidade autêntica + consistência + automação</strong> = crescimento orgânico.</p>
+      </div>
+
+      <div class="nicho-grid reveal">
+
+        <div class="nicho-card">
+          <div class="nicho-icon">🏋️</div>
+          <div class="nicho-body">
+            <h3>Fitness & Personal</h3>
+            <p>Influencer que treina, motiva e vende planos, suplementos ou aulas. Engajamento altíssimo no nicho.</p>
+            <div class="nicho-tags"><span>Instagram</span><span>TikTok</span></div>
+          </div>
+        </div>
+
+        <div class="nicho-card">
+          <div class="nicho-icon">👩‍🍳</div>
+          <div class="nicho-body">
+            <h3>Gastronomia & Delivery</h3>
+            <p>Chef ou foodie que mostra bastidores, receitas e lança promoções. Converte direto para pedidos.</p>
+            <div class="nicho-tags"><span>Instagram</span><span>Facebook</span></div>
+          </div>
+        </div>
+
+        <div class="nicho-card">
+          <div class="nicho-icon">💄</div>
+          <div class="nicho-body">
+            <h3>Beleza & Estética</h3>
+            <p>Especialista em skincare, cabelo ou unhas que demonstra antes/depois e promove agendamentos.</p>
+            <div class="nicho-tags"><span>Instagram</span><span>TikTok</span></div>
+          </div>
+        </div>
+
+        <div class="nicho-card">
+          <div class="nicho-icon">🏡</div>
+          <div class="nicho-body">
+            <h3>Imóveis & Construção</h3>
+            <p>Corretora ou arquiteta que apresenta imóveis, dá dicas de decoração e gera leads qualificados.</p>
+            <div class="nicho-tags"><span>Instagram</span><span>YouTube</span></div>
+          </div>
+        </div>
+
+        <div class="nicho-card">
+          <div class="nicho-icon">🏍️</div>
+          <div class="nicho-body">
+            <h3>Motociclismo & Lifestyle</h3>
+            <p>Motociclista que vive aventuras na estrada — contraste visual poderoso que para o scroll na hora.</p>
+            <div class="nicho-tags"><span>TikTok</span><span>Instagram</span></div>
+          </div>
+        </div>
+
+        <div class="nicho-card">
+          <div class="nicho-icon">🐾</div>
+          <div class="nicho-body">
+            <h3>Pet & Veterinária</h3>
+            <p>Amante de animais que educa, emociona e promove produtos e consultas. Audiência extremamente fiel.</p>
+            <div class="nicho-tags"><span>Instagram</span><span>TikTok</span></div>
+          </div>
+        </div>
+
+        <div class="nicho-card">
+          <div class="nicho-icon">📚</div>
+          <div class="nicho-body">
+            <h3>Educação & Cursos</h3>
+            <p>Professora ou mentora que entrega valor gratuito e converte para matrículas e produtos digitais.</p>
+            <div class="nicho-tags"><span>Instagram</span><span>YouTube</span></div>
+          </div>
+        </div>
+
+        <div class="nicho-card nicho-card-plus">
+          <div class="nicho-icon">✦</div>
+          <div class="nicho-body">
+            <h3>O seu nicho</h3>
+            <p>Qualquer segmento, qualquer identidade. Conte para a gente o que sua marca precisa.</p>
+            <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Quero%20criar%20uma%20influencer%20IA%20para%20o%20meu%20nicho." target="_blank" rel="noopener" class="nicho-cta">Falar agora →</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
