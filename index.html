@@ -4356,13 +4356,13 @@
         </div>
         <div class="step-item">
           <div class="step-num">03</div>
-          <h3>50% para iniciar</h3>
-          <p>Aprovada a proposta, 50% para começar. Personagem pronto em 7 dias. Restante na entrega.</p>
+          <h3>Você nos envia os acessos</h3>
+          <p>Para criar os perfis e o site, precisamos de acesso temporário ao e-mail da marca. Tudo tratado com total sigilo e devolvido após a configuração.</p>
         </div>
         <div class="step-item">
           <div class="step-num">04</div>
-          <h3>Mensalidade simples</h3>
-          <p>Do 2º mês em diante é mensalidade adiantada. Sem fidelidade, cancela quando quiser.</p>
+          <h3>50% para iniciar · entrega em 7 dias</h3>
+          <p>Primeiro pagamento para começar. Personagem, perfis e site prontos. Restante pago na entrega. Do 2º mês: mensalidade adiantada, sem fidelidade.</p>
         </div>
       </div>
 
@@ -4431,6 +4431,13 @@
             <div>
               <label style="display:block;font-size:0.78rem;font-weight:700;color:var(--muted2);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:1px;">Conte mais sobre o seu projeto</label>
               <textarea id="bf-obs" rows="4" placeholder="Fale livremente — o que você quer comunicar, o tom da marca, alguma ideia que já tem em mente..." style="width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;resize:vertical;line-height:1.6;transition:border 0.2s;" onfocus="this.style.borderColor='var(--p1)'" onblur="this.style.borderColor='var(--border2)'"></textarea>
+            </div>
+
+            <div style="background:rgba(168,85,247,0.06);border:1px solid rgba(168,85,247,0.2);border-radius:16px;padding:1.2rem 1.5rem;">
+              <label style="display:flex;align-items:flex-start;gap:0.85rem;cursor:pointer;">
+                <input type="checkbox" id="bf-aceite" style="width:18px;height:18px;margin-top:2px;accent-color:#a855f7;flex-shrink:0;cursor:pointer;" />
+                <span style="font-size:0.85rem;color:var(--muted2);line-height:1.6;">Estou ciente de que, após a contratação, precisarei compartilhar acesso temporário ao e-mail da marca para que a Zeira23 Studio possa criar e configurar os perfis e o site. Esse acesso é usado exclusivamente para a configuração e tratado com total sigilo.</span>
+              </label>
             </div>
 
             <button onclick="enviarBriefing()" style="width:100%;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;font-family:inherit;font-size:1rem;font-weight:800;padding:1rem;border:none;border-radius:50px;cursor:pointer;transition:all 0.3s;box-shadow:0 0 30px rgba(168,85,247,0.35);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 40px rgba(168,85,247,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 0 30px rgba(168,85,247,0.35)'">
@@ -4579,9 +4586,15 @@
       const redes = document.getElementById('bf-redes').value;
       const plano = document.getElementById('bf-plano').value;
       const obs = document.getElementById('bf-obs').value.trim();
+      const aceite = document.getElementById('bf-aceite').checked;
 
       if (!nome || !negocio || !publico || !personalidade) {
         alert('Por favor preencha pelo menos: nome, negócio, público-alvo e personalidade da influencer.');
+        return;
+      }
+
+      if (!aceite) {
+        alert('Por favor confirme que está ciente sobre o compartilhamento de acesso para criação dos perfis e site.');
         return;
       }
 
@@ -4596,6 +4609,8 @@
         redes ? `📱 *Redes sociais:* ${redes}` : null,
         plano ? `💼 *Plano de interesse:* ${plano}` : null,
         obs ? `📝 *Mais detalhes:* ${obs}` : null,
+        '',
+        '✅ *Ciente sobre compartilhamento de acesso para configuração dos perfis e site.*',
       ].filter(Boolean).join('\n');
 
       window.open('https://wa.me/5511974120291?text=' + encodeURIComponent(msg), '_blank');
