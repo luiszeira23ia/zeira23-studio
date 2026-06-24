@@ -1,2188 +1,2188 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zeira23 Studio â€” Influencers IA para sua marca</title>
-  <meta name="description" content="Criamos influencers de inteligÃªncia artificial exclusivas para a sua marca. Identidade visual, voz clonada e conteÃºdo mensal automatizado. Sem pagar influencer real." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #050507;
-      --bg2: #0a0a0f;
-      --card: #0f0f18;
-      --card2: #141420;
-      --border: rgba(255,255,255,0.06);
-      --border2: rgba(255,255,255,0.1);
-      --p1: #a855f7;
-      --p2: #ec4899;
-      --p3: #6366f1;
-      --grad: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-      --grad2: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-      --text: #e8e8f0;
-      --muted: #6b7280;
-      --muted2: #9ca3af;
-      --white: #ffffff;
-      --green: #22c55e;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* NOISE TEXTURE */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.5;
-    }
-
-    /* GRADIENT ORBS */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      z-index: 0;
-      animation: orbFloat 8s ease-in-out infinite;
-    }
-    .orb-1 { width: 500px; height: 500px; background: rgba(168,85,247,0.12); top: -100px; left: -150px; animation-delay: 0s; }
-    .orb-2 { width: 400px; height: 400px; background: rgba(236,72,153,0.1); bottom: 10%; right: -100px; animation-delay: -3s; }
-    .orb-3 { width: 300px; height: 300px; background: rgba(99,102,241,0.08); top: 50%; left: 40%; animation-delay: -6s; }
-
-    @keyframes orbFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-30px) scale(1.05); }
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2.5rem;
-      transition: all 0.4s;
-    }
-
-    nav.scrolled {
-      background: rgba(5,5,7,0.9);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-size: 1.15rem;
-      font-weight: 800;
-      background: var(--grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted2);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-
-    .btn-nav-wpp {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #25D366;
-      color: #fff !important;
-      font-weight: 700 !important;
-      font-size: 0.85rem !important;
-      padding: 0.6rem 1.3rem;
-      border-radius: 50px;
-      text-decoration: none !important;
-      transition: all 0.2s !important;
-      box-shadow: 0 0 20px rgba(37,211,102,0.3);
-    }
-    .btn-nav-wpp:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding: 7rem 2.5rem 5rem;
-      overflow: hidden;
-    }
-
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(168,85,247,0.1);
-      border: 1px solid rgba(168,85,247,0.25);
-      border-radius: 50px;
-      padding: 0.4rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--p1);
-      margin-bottom: 1.8rem;
-      animation: fadeUp 0.8s ease both;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--p1);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -2.5px;
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.8s ease 0.1s both;
-    }
-
-    .hero h1 .grad-text {
-      background: var(--grad2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted2);
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-      max-width: 480px;
-      animation: fadeUp 0.8s ease 0.2s both;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s ease 0.3s both;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--grad);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 0 30px rgba(168,85,247,0.35);
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(168,85,247,0.5); }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted2);
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.9rem 1.8rem;
-      border-radius: 50px;
-      text-decoration: none;
-      border: 1px solid var(--border2);
-      transition: all 0.3s;
-    }
-    .btn-ghost:hover { color: var(--white); border-color: var(--p1); }
-
-    /* HERO VISUAL */
-    .hero-visual {
-      position: relative;
-      animation: fadeUp 0.8s ease 0.2s both;
-    }
-
-    .hero-img-wrap {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-    }
-
-    .hero-img-glow {
-      position: absolute;
-      inset: -20px;
-      background: var(--grad);
-      border-radius: 32px;
-      filter: blur(40px);
-      opacity: 0.25;
-      animation: glowPulse 3s ease-in-out infinite;
-    }
-
-    @keyframes glowPulse {
-      0%, 100% { opacity: 0.2; transform: scale(0.98); }
-      50% { opacity: 0.35; transform: scale(1.02); }
-    }
-
-    .hero-img-border {
-      position: relative;
-      padding: 2px;
-      background: var(--grad);
-      border-radius: 28px;
-      z-index: 1;
-    }
-
-    .hero-img-border img {
-      width: 100%;
-      border-radius: 26px;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 3/4;
-    }
-
-    /* FLOATING CARDS */
-    .float-card {
-      position: absolute;
-      background: rgba(15,15,24,0.9);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border2);
-      border-radius: 16px;
-      padding: 0.9rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      z-index: 2;
-      white-space: nowrap;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-      animation: floatAnim 4s ease-in-out infinite;
-    }
-
-    .float-card-1 { top: 10%; right: -20px; animation-delay: 0s; }
-    .float-card-2 { bottom: 15%; left: -20px; animation-delay: -2s; }
-
-    @keyframes floatAnim {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .float-icon { font-size: 1.6rem; }
-    .float-text { font-size: 0.8rem; }
-    .float-text strong { display: block; font-size: 0.9rem; color: var(--white); font-weight: 700; }
-
-    .badge-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--green);
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.2);
-      border-radius: 50px;
-      padding: 0.2rem 0.6rem;
-      margin-top: 0.2rem;
-    }
-    .badge-live::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse 1.5s infinite;
-    }
-
-    /* NUMBERS BAR */
-    .numbers-bar {
-      padding: 3rem 2.5rem;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg2);
-      position: relative;
-      z-index: 1;
-    }
-
-    .numbers-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    .num-item { text-align: center; }
-
-    .num-value {
-      font-size: 2.8rem;
-      font-weight: 900;
-      letter-spacing: -2px;
-      background: var(--grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-    }
-
-    .num-label { font-size: 0.85rem; color: var(--muted2); margin-top: 0.3rem; }
-
-    /* SECTIONS */
-    section { position: relative; z-index: 1; padding: 6rem 2.5rem; }
-
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--p1);
-      margin-bottom: 1rem;
-    }
-
-    .section-h {
-      font-size: clamp(1.9rem, 3.5vw, 3rem);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      margin-bottom: 1rem;
-      line-height: 1.1;
-    }
-
-    .section-h .g { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-    .section-sub { color: var(--muted2); font-size: 1.05rem; line-height: 1.7; max-width: 600px; margin-bottom: 3.5rem; }
-
-    /* PROBLEMA */
-    .problema-bg { background: var(--bg2); }
-
-    .problema-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .prob-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 2rem;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .prob-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: var(--grad);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .prob-card:hover { border-color: rgba(168,85,247,0.2); transform: translateY(-4px); }
-    .prob-card:hover::before { opacity: 1; }
-
-    .prob-emoji { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
-    .prob-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .prob-card p { color: var(--muted2); font-size: 0.9rem; line-height: 1.65; }
-
-    /* STEPS */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-
-    .step-item {
-      background: var(--card);
-      padding: 2.5rem 2rem;
-      transition: background 0.3s;
-      position: relative;
-    }
-
-    .step-item:hover { background: var(--card2); }
-
-    .step-num {
-      font-size: 3.5rem;
-      font-weight: 900;
-      background: var(--grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      opacity: 0.2;
-      line-height: 1;
-      margin-bottom: 1rem;
-      letter-spacing: -3px;
-    }
-
-    .step-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .step-item p { color: var(--muted2); font-size: 0.88rem; line-height: 1.65; }
-
-    /* CASE STUDY */
-    .case-bg { background: var(--bg2); }
-
-    .case-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .case-gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 1rem;
-    }
-
-    .case-gallery img {
-      width: 100%;
-      border-radius: 18px;
-      object-fit: cover;
-      border: 1px solid var(--border);
-      transition: transform 0.3s;
-    }
-    .case-gallery img:hover { transform: scale(1.02); }
-
-    .case-gallery .img-main {
-      grid-column: 1 / -1;
-      aspect-ratio: 16/9;
-    }
-
-    .case-gallery .img-sm { aspect-ratio: 3/4; }
-
-    .case-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(168,85,247,0.1);
-      border: 1px solid rgba(168,85,247,0.2);
-      border-radius: 50px;
-      padding: 0.35rem 1rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--p1);
-      margin-bottom: 1.2rem;
-    }
-
-    .case-info h3 {
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 1rem;
-      line-height: 1.15;
-    }
-
-    .case-info p { color: var(--muted2); line-height: 1.75; margin-bottom: 2rem; }
-
-    .case-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .metric {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.2rem;
-      transition: all 0.3s;
-    }
-    .metric:hover { border-color: rgba(168,85,247,0.3); }
-
-    .metric-val {
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      background: var(--grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-    }
-
-    .metric-label { font-size: 0.8rem; color: var(--muted2); margin-top: 0.2rem; }
-
-    .check-list { list-style: none; }
-    .check-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-      color: var(--muted2);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    .check-list li .ck {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: rgba(168,85,247,0.15);
-      border: 1px solid rgba(168,85,247,0.3);
-      color: var(--p1);
-      font-size: 0.65rem;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    /* PLANS */
-    .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .plan {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 2.5rem;
-      position: relative;
-      transition: all 0.3s;
-    }
-
-    .plan:hover { transform: translateY(-4px); }
-
-    .plan.hot {
-      background: linear-gradient(145deg, #120d1e, #1a0d28);
-      border-color: rgba(168,85,247,0.4);
-      box-shadow: 0 0 60px rgba(168,85,247,0.15);
-    }
-
-    .plan-top-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--grad);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 0.3rem 1.2rem;
-      border-radius: 50px;
-      white-space: nowrap;
-    }
-
-    .plan-name {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--muted2);
-      margin-bottom: 0.75rem;
-    }
-
-    .plan-price {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: -2.5px;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .plan-price sub {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--muted2);
-      letter-spacing: 0;
-      vertical-align: baseline;
-    }
-
-    .plan-period { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
-
-    .plan-divider {
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 1.5rem;
-    }
-
-    .plan-desc { color: var(--muted2); font-size: 0.88rem; line-height: 1.65; margin-bottom: 1.5rem; }
-
-    .plan-items { list-style: none; margin-bottom: 2rem; }
-    .plan-items li {
-      display: flex;
-      gap: 0.7rem;
-      font-size: 0.88rem;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-      align-items: flex-start;
-    }
-    .plan-items .ico {
-      color: var(--p1);
-      font-weight: 900;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .btn-plan {
-      display: block;
-      text-align: center;
-      padding: 0.9rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .btn-plan-outline { border: 1px solid var(--border2); color: var(--text); }
-    .btn-plan-outline:hover { border-color: var(--p1); color: var(--p1); }
-
-    .btn-plan-grad { background: var(--grad); color: #fff; box-shadow: 0 0 30px rgba(168,85,247,0.3); }
-    .btn-plan-grad:hover { box-shadow: 0 4px 40px rgba(168,85,247,0.5); transform: translateY(-2px); }
-
-    /* CTA */
-    .cta-section { padding: 6rem 2.5rem; background: var(--bg2); }
-
-    .cta-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
-      border: 1px solid rgba(168,85,247,0.2);
-      border-radius: 40px;
-      padding: 5rem 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-inner::before {
-      content: '';
-      position: absolute;
-      top: -80px; left: 50%;
-      transform: translateX(-50%);
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(168,85,247,0.2), transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-inner h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      margin-bottom: 1rem;
-      position: relative;
-    }
-
-    .cta-inner p {
-      color: var(--muted2);
-      font-size: 1.05rem;
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-      position: relative;
-    }
-
-    .btn-wpp {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      background: #25D366;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 1.1rem 2.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 0 40px rgba(37,211,102,0.35);
-      position: relative;
-    }
-    .btn-wpp:hover { transform: translateY(-3px); box-shadow: 0 8px 50px rgba(37,211,102,0.5); }
-
-    .cta-note { margin-top: 1.2rem; font-size: 0.82rem; color: var(--muted); }
-
-    /* FOOTER */
-    footer {
-      padding: 2rem 2.5rem;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    footer .logo { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800; }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* NICHOS */
-    .nicho-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
-    }
-
-    .nicho-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nicho-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--grad);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .nicho-card:hover {
-      border-color: rgba(168,85,247,0.25);
-      transform: translateY(-4px);
-      background: var(--card2);
-    }
-    .nicho-card:hover::before { opacity: 1; }
-
-    .nicho-card-plus {
-      background: linear-gradient(145deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
-      border-color: rgba(168,85,247,0.3);
-    }
-    .nicho-card-plus::before { opacity: 1; }
-
-    .nicho-icon {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .nicho-body h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--white);
-    }
-
-    .nicho-body p {
-      font-size: 0.83rem;
-      color: var(--muted2);
-      line-height: 1.6;
-      margin-bottom: 0.9rem;
-    }
-
-    .nicho-tags {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .nicho-tags span {
-      font-size: 0.7rem;
-      font-weight: 600;
-      background: rgba(168,85,247,0.1);
-      border: 1px solid rgba(168,85,247,0.2);
-      color: var(--p1);
-      padding: 0.2rem 0.6rem;
-      border-radius: 50px;
-    }
-
-    .nicho-cta {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--p1);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nicho-cta:hover { color: var(--p2); }
-
-    @media (max-width: 900px) {
-      .nicho-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .nicho-grid { grid-template-columns: 1fr; }
-    }
-
-    /* NICHOS VISUAL BENTO */
-    .nv-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 290px;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .nv-card {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      cursor: pointer;
-    }
-    .nv-card.span2 { grid-column: span 2; }
-    .nv-card img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-      display: block;
-    }
-    .nv-card:hover img { transform: scale(1.07); }
-    .nv-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.88) 35%, rgba(0,0,0,0.1) 70%);
-    }
-    .nv-content {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 1.5rem;
-    }
-    .nv-niche {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--p1);
-      margin-bottom: 0.35rem;
-    }
-    .nv-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 0;
-    }
-    .nv-desc {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.55;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, margin 0.3s;
-    }
-    .nv-card:hover .nv-desc { max-height: 80px; margin-top: 0.5rem; }
-    .nv-tags {
-      display: flex; gap: 0.4rem; flex-wrap: wrap;
-      margin-top: 0.7rem;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .nv-card:hover .nv-tags { opacity: 1; }
-    .nv-tag {
-      font-size: 0.62rem; font-weight: 700;
-      background: rgba(168,85,247,0.35);
-      border: 1px solid rgba(168,85,247,0.5);
-      color: #e8d5ff;
-      padding: 0.2rem 0.6rem;
-      border-radius: 50px;
-    }
-    .nv-cta-row {
-      background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
-      border: 1px solid rgba(168,85,247,0.25);
-      border-radius: 20px;
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .nv-cta-row p { color: var(--muted2); font-size: 0.9rem; margin: 0; }
-    .nv-cta-row strong { color: var(--white); }
-    @media (max-width: 900px) {
-      .nv-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
-      .nv-card.span2 { grid-column: span 2; }
-    }
-    @media (max-width: 560px) {
-      .nv-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
-    }
-
-    /* FAQ */
-    .faq-list { max-width: 780px; margin: 0 auto; }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .faq-q {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.5rem 0;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      text-align: left;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .faq-q:hover { color: var(--p1); }
-
-    .faq-arrow {
-      font-size: 1rem;
-      color: var(--p1);
-      flex-shrink: 0;
-      transition: transform 0.3s;
-      display: inline-block;
-    }
-    .faq-q.open .faq-arrow { transform: rotate(180deg); }
-
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s;
-    }
-    .faq-a.open { max-height: 300px; padding-bottom: 1.5rem; }
-    .faq-a p { color: var(--muted2); font-size: 0.93rem; line-height: 1.75; }
-
-    /* SCARCITY BADGE */
-    .scarcity-bar {
-      background: linear-gradient(135deg, rgba(168,85,247,0.12), rgba(236,72,153,0.08));
-      border: 1px solid rgba(168,85,247,0.25);
-      border-radius: 16px;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 3rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .scarcity-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #f97316;
-      animation: pulse 1.5s infinite;
-      flex-shrink: 0;
-    }
-    .scarcity-bar span.hl { color: #f97316; font-weight: 800; }
-
-    /* GALLERY FILTERS */
-    .gallery-filters {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-    }
-    .filter-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      border: 1px solid var(--border2);
-      background: transparent;
-      color: var(--muted2);
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-    .filter-btn:hover { color: var(--white); border-color: rgba(168,85,247,0.4); }
-    .filter-btn.active { background: var(--grad); border-color: transparent; color: #fff; box-shadow: 0 0 20px rgba(168,85,247,0.3); }
-
-    /* GALLERY GRID */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
-    .gi {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      aspect-ratio: 3/4;
-      transition: opacity 0.35s ease, transform 0.35s ease;
-    }
-    .gi.hidden { display: none; }
-    .gi img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      display: block;
-    }
-    .gi:hover img { transform: scale(1.07); }
-    .gi-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .gi:hover .gi-overlay { opacity: 1; }
-    .gi-tag {
-      position: absolute;
-      bottom: 1rem; left: 1rem;
-      background: rgba(5,5,7,0.82);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 50px;
-      padding: 0.3rem 0.85rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #fff;
-      opacity: 0;
-      transition: opacity 0.3s;
-      white-space: nowrap;
-    }
-    .gi:hover .gi-tag { opacity: 1; }
-    .gi-ai {
-      position: absolute;
-      top: 0.75rem; right: 0.75rem;
-      background: rgba(168,85,247,0.88);
-      backdrop-filter: blur(8px);
-      border-radius: 50px;
-      padding: 0.2rem 0.65rem;
-      font-size: 0.62rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-    .gallery-note {
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 500px)  { .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; } }
-
-    /* VIDEO CASE */
-    .video-case-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .video-wrap {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #000;
-      box-shadow: 0 0 60px rgba(168,85,247,0.12);
-    }
-    .video-wrap video { width: 100%; display: block; }
-    .video-badge {
-      position: absolute;
-      top: 1rem; left: 1rem;
-      background: rgba(168,85,247,0.92);
-      border-radius: 50px;
-      padding: 0.25rem 0.85rem;
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      z-index: 2;
-    }
-    @media (max-width: 900px) { .video-case-wrap { grid-template-columns: 1fr; gap: 2.5rem; } }
-
-    /* CONSISTENCY GRID */
-    .cons-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
-    .cons-item {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      aspect-ratio: 4/5;
-      cursor: pointer;
-    }
-    .cons-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: transform 0.55s ease;
-      display: block;
-    }
-    .cons-item:hover img { transform: scale(1.06); }
-    .cons-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.78) 25%, transparent 65%);
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-    .cons-item:hover .cons-overlay { opacity: 1; }
-    .cons-badge {
-      position: absolute;
-      top: 0.85rem; left: 0.85rem;
-      background: rgba(168,85,247,0.88);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50px;
-      padding: 0.22rem 0.75rem;
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .cons-badge::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: #fff;
-    }
-    .cons-label {
-      position: absolute;
-      bottom: 1rem; left: 1rem; right: 1rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #fff;
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-    .cons-item:hover .cons-label { opacity: 1; }
-    .cons-proof {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .cons-proof-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--card);
-      border: 1px solid var(--border2);
-      border-radius: 50px;
-      padding: 0.6rem 1.3rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .cons-proof-pill .ck2 {
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      background: var(--grad);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 900;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    @media (max-width: 700px) {
-      .cons-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* CELEBRIDADES */
-    .celeb-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .celeb-card {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      aspect-ratio: 3/4;
-      cursor: pointer;
-      background: #000;
-    }
-    .celeb-card img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      transition: transform 0.5s ease;
-      filter: brightness(0.92);
-    }
-    .celeb-card:hover img { transform: scale(1.05); filter: brightness(1); }
-    .celeb-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.88) 30%, rgba(0,0,0,0.05) 65%);
-    }
-    .celeb-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 1rem 1rem 1.1rem;
-    }
-    .celeb-handle {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: var(--p1);
-      margin-bottom: 0.3rem;
-      letter-spacing: 0.5px;
-    }
-    .celeb-text {
-      display: block;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.45;
-    }
-    .celeb-badge {
-      position: absolute;
-      top: 0.75rem; right: 0.75rem;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50px;
-      padding: 0.25rem 0.7rem;
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .celeb-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      background: linear-gradient(135deg, rgba(168,85,247,0.07), rgba(236,72,153,0.05));
-      border: 1px solid rgba(168,85,247,0.2);
-      border-radius: 20px;
-      padding: 1.5rem 2rem;
-    }
-    .celeb-bottom-pill {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    @media (max-width: 900px) { .celeb-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 500px)  { .celeb-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; } }
-
-    /* SVG ICONS */
-    .ico-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .hero h1 { font-size: 2.6rem; }
-      .hero-visual { order: -1; }
-      .float-card-1 { right: 0; }
-      .float-card-2 { left: 0; }
-      .numbers-inner { grid-template-columns: repeat(2, 1fr); }
-      .problema-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: 1fr 1fr; }
-      .case-wrap { grid-template-columns: 1fr; gap: 3rem; }
-      .plans-grid { grid-template-columns: 1fr; }
-      section { padding: 4rem 1.5rem; }
-    }
-
-    @media (max-width: 600px) {
-      nav { padding: 1rem 1.5rem; }
-      .hero { padding: 6rem 1.5rem 4rem; }
-      .hero h1 { font-size: 2rem; letter-spacing: -1.5px; }
-      .numbers-inner { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .cta-inner { padding: 3rem 1.5rem; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-
-  <!-- NAV -->
-  <nav id="nav">
-    <div class="nav-logo">Zeira23 Studio</div>
-    <ul class="nav-links">
-      <li><a href="#como">Como funciona</a></li>
-      <li><a href="#consistencia">ConsistÃªncia</a></li>
-      <li><a href="#nichos">Nichos</a></li>
-      <li><a href="#portfolio">PortfÃ³lio</a></li>
-      <li><a href="#planos">Planos</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li>
-        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Zeira23%20Studio%20e%20quero%20saber%20mais." target="_blank" rel="noopener" class="btn-nav-wpp">
-          <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-          WhatsApp
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-eyebrow">AgÃªncia de IA para marcas</div>
-        <h1>Sua marca com <span class="grad-text">rosto, voz e presenÃ§a</span> nas redes sociais</h1>
-        <p>Criamos influencers de inteligÃªncia artificial exclusivas para o seu negÃ³cio â€” identidade visual, voz clonada e conteÃºdo mensal automatizado. Sem pagar influencer real.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Zeira23%20Studio%20e%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" class="btn-primary">
-            <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-            Falar agora no WhatsApp
-          </a>
-          <a href="#portfolio" class="btn-ghost">Ver portfÃ³lio â†’</a>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-img-wrap">
-          <div class="hero-img-glow"></div>
-          <div class="hero-img-border">
-            <img src="assets/images/allanis_hero.jpeg" alt="Allanis Duarte â€” Influencer IA criada pela Zeira23 Studio" style="object-position: center top;" />
-          </div>
-          <div class="float-card float-card-1">
-            <div class="float-icon">ðŸ¤–</div>
-            <div class="float-text">
-              <strong>100% InteligÃªncia Artificial</strong>
-              <span class="badge-live">postando agora</span>
-            </div>
-          </div>
-          <div class="float-card float-card-2">
-            <div class="float-icon">âš¡</div>
-            <div class="float-text">
-              <strong>Pronta em 7 dias</strong>
-              identidade + voz + conteÃºdo
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NUMBERS -->
-  <div class="numbers-bar">
-    <div class="numbers-inner">
-      <div class="num-item reveal">
-        <span class="num-value" data-count="100">0</span>
-        <div class="num-label">% de postagem automÃ¡tica</div>
-      </div>
-      <div class="num-item reveal" style="transition-delay:0.1s">
-        <span class="num-value" data-count="3">0</span>
-        <div class="num-label">plataformas gerenciadas</div>
-      </div>
-      <div class="num-item reveal" style="transition-delay:0.2s">
-        <span class="num-value" data-count="7">0</span>
-        <div class="num-label">dias do zero ao ar</div>
-      </div>
-      <div class="num-item reveal" style="transition-delay:0.3s">
-        <span class="num-value">R$0</span>
-        <div class="num-label">gasto com influencer real</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEMA -->
-  <section class="problema-bg">
-    <div class="container">
-      <div class="reveal">
-        <div class="tag">O problema que resolvemos</div>
-        <h2 class="section-h">Por que influencer real <span class="g">nÃ£o Ã© para todo mundo</span></h2>
-        <p class="section-sub">A maioria dos negÃ³cios quer crescer nas redes sociais, mas esbarra nas mesmas barreiras.</p>
-      </div>
-      <div class="problema-grid">
-        <div class="prob-card reveal">
-          <span class="prob-emoji">ðŸ’¸</span>
-          <h3>Custo proibitivo</h3>
-          <p>Uma influencer com audiÃªncia relevante cobra de R$3.000 a R$50.000 por post. InviÃ¡vel para quem estÃ¡ comeÃ§ando.</p>
-        </div>
-        <div class="prob-card reveal" style="transition-delay:0.1s">
-          <span class="prob-emoji">ðŸŽ²</span>
-          <h3>Falta de controle</h3>
-          <p>VocÃª depende da agenda, do humor e da imagem de outra pessoa. Um escÃ¢ndalo derruba tudo que vocÃª construiu.</p>
-        </div>
-        <div class="prob-card reveal" style="transition-delay:0.2s">
-          <span class="prob-emoji">ðŸ“…</span>
-          <h3>Sem consistÃªncia</h3>
-          <p>Produzir conteÃºdo de qualidade toda semana exige equipe, tempo e dinheiro que poucos negÃ³cios tÃªm disponÃ­vel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMO FUNCIONA -->
-  <section id="como">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
-        <div class="tag">Como funciona</div>
-        <h2 class="section-h">Do zero ao ar <span class="g">em 4 passos</span></h2>
-        <p class="section-sub" style="margin:0 auto;">Um processo simples que entrega uma influencer exclusiva, pronta para representar a sua marca.</p>
-      </div>
-      <div class="steps-grid reveal">
-        <div class="step-item">
-          <div class="step-num">01</div>
-          <h3>Briefing da marca</h3>
-          <p>Entendemos o seu negÃ³cio, pÃºblico-alvo, tom de voz e objetivos. Tudo por WhatsApp, sem complicaÃ§Ã£o.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">02</div>
-          <h3>CriaÃ§Ã£o do personagem</h3>
-          <p>Desenvolvemos a identidade visual Ãºnica, personalidade e voz clonada da sua influencer IA exclusiva.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">03</div>
-          <h3>ProduÃ§Ã£o de conteÃºdo</h3>
-          <p>Geramos fotos, reels e legendas mensalmente â€” alinhados com o calendÃ¡rio e a estratÃ©gia da sua marca.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">04</div>
-          <h3>Postagem automÃ¡tica</h3>
-          <p>Configuramos o sistema para publicar nos horÃ¡rios certos. VocÃª nÃ£o precisa fazer absolutamente nada.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONSISTÃŠNCIA -->
-  <section class="problema-bg" id="consistencia">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
-        <div class="tag">O diferencial que muda tudo</div>
-        <h2 class="section-h">Um rosto. <span class="g">Infinitos cenÃ¡rios.</span></h2>
-        <p class="section-sub" style="margin:0 auto;">A identidade visual nunca muda â€” independente do nicho, do cenÃ¡rio ou do contexto. Passe o mouse nas fotos abaixo e veja: Ã© sempre a mesma influencer. Isso Ã© o que separa a Zeira23 de qualquer outra soluÃ§Ã£o do mercado.</p>
-      </div>
-
-      <div class="cons-grid reveal">
-
-        <div class="cons-item">
-          <img src="assets/images/nicho_fitness.jpeg" alt="Academia" />
-          <div class="cons-badge">Allanis âœ“</div>
-          <div class="cons-overlay"></div>
-          <div class="cons-label">ðŸ’ª Academia Â· SÃ£o Paulo, SP</div>
-        </div>
-
-        <div class="cons-item">
-          <img src="assets/images/nicho_gastro.jpeg" alt="Sushi" />
-          <div class="cons-badge">Allanis âœ“</div>
-          <div class="cons-overlay"></div>
-          <div class="cons-label">ðŸ£ Gastronomia Â· Omakase, Vila Madalena</div>
-        </div>
-
-        <div class="cons-item">
-          <img src="assets/images/nicho_auto.jpeg" alt="Red Bull F1" />
-          <div class="cons-badge">Allanis âœ“</div>
-          <div class="cons-overlay"></div>
-          <div class="cons-label">ðŸŽï¸ PatrocÃ­nio Â· Red Bull Racing, F1</div>
-        </div>
-
-        <div class="cons-item">
-          <img src="assets/images/nicho_cafe.jpeg" alt="Padaria" />
-          <div class="cons-badge">Allanis âœ“</div>
-          <div class="cons-overlay"></div>
-          <div class="cons-label">â˜• Lifestyle Â· Padaria, SÃ£o Paulo</div>
-        </div>
-
-        <div class="cons-item">
-          <img src="assets/images/miami_pool_tropicale.jpeg" alt="Piscina Hotel Miami" />
-          <div class="cons-badge">Allanis âœ“</div>
-          <div class="cons-overlay"></div>
-          <div class="cons-label">âœˆï¸ Viagem Â· Hotel de Luxo, Miami</div>
-        </div>
-
-        <div class="cons-item">
-          <img src="assets/images/miami_estadio_brasil.jpeg" alt="Copa do Mundo Miami" />
-          <div class="cons-badge">Allanis âœ“</div>
-          <div class="cons-overlay"></div>
-          <div class="cons-label">ðŸ‡§ðŸ‡· Eventos Â· Copa do Mundo, Miami</div>
-        </div>
-
-      </div>
-
-      <div class="cons-proof reveal">
-        <div class="cons-proof-pill"><span class="ck2">âœ“</span> Mesmo rosto em 100% dos conteÃºdos</div>
-        <div class="cons-proof-pill"><span class="ck2">âœ“</span> Mesma voz clonada em todos os vÃ­deos</div>
-        <div class="cons-proof-pill"><span class="ck2">âœ“</span> Qualquer cenÃ¡rio, qualquer nicho</div>
-        <div class="cons-proof-pill"><span class="ck2">âœ“</span> Sem fotÃ³grafo, sem modelo, sem cachÃª</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NICHOS -->
-  <section id="nichos">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:1.5rem;">
-        <div class="tag">Para qualquer segmento</div>
-        <h2 class="section-h">Criamos para o <span class="g">nicho da sua marca</span></h2>
-        <p class="section-sub" style="margin:0 auto 1rem;">O personagem Ã© desenvolvido com a identidade, estilo e linguagem que o seu pÃºblico jÃ¡ consome. A fÃ³rmula Ã© simples: <strong style="color:var(--text)">identidade autÃªntica + consistÃªncia + automaÃ§Ã£o</strong> = crescimento orgÃ¢nico.</p>
-      </div>
-
-      <div class="nv-grid reveal">
-
-        <div class="nv-card span2">
-          <img src="assets/images/nicho_auto.jpeg" alt="Automobilismo Red Bull F1" />
-          <div class="nv-overlay"></div>
-          <div class="nv-content">
-            <div class="nv-niche">ðŸŽï¸ Automobilismo</div>
-            <div class="nv-title">PatrocÃ­nio & Eventos de Alto Impacto</div>
-            <div class="nv-desc">Influencer IA dentro do pit lane da Red Bull Racing. Contratos de patrocÃ­nio que custariam R$50k+ â€” com IA, R$0 de cachÃª.</div>
-            <div class="nv-tags"><span class="nv-tag">F1</span><span class="nv-tag">PatrocÃ­nio</span><span class="nv-tag">Instagram</span></div>
-          </div>
-        </div>
-
-        <div class="nv-card">
-          <img src="assets/images/nicho_gastro.jpeg" alt="Gastronomia Sushi" />
-          <div class="nv-overlay"></div>
-          <div class="nv-content">
-            <div class="nv-niche">ðŸ£ Gastronomia</div>
-            <div class="nv-title">Restaurantes & Delivery</div>
-            <div class="nv-desc">Foodie que converte direto para reservas e pedidos. Restaurante, bar, delivery â€” qualquer formato.</div>
-            <div class="nv-tags"><span class="nv-tag">Instagram</span><span class="nv-tag">TikTok</span></div>
-          </div>
-        </div>
-
-        <div class="nv-card">
-          <img src="assets/images/nicho_fitness.jpeg" alt="Fitness Academia" />
-          <div class="nv-overlay"></div>
-          <div class="nv-content">
-            <div class="nv-niche">ðŸ’ª Fitness</div>
-            <div class="nv-title">Academia & Personal</div>
-            <div class="nv-desc">Motiva, treina e vende â€” planos, suplementos ou aulas. Engajamento altÃ­ssimo no nicho fitness.</div>
-            <div class="nv-tags"><span class="nv-tag">Reels</span><span class="nv-tag">TikTok</span></div>
-          </div>
-        </div>
-
-        <div class="nv-card">
-          <img src="assets/images/nicho_lifestyle.jpeg" alt="Lifestyle Rio" />
-          <div class="nv-overlay"></div>
-          <div class="nv-content">
-            <div class="nv-niche">ðŸŒ† Lifestyle</div>
-            <div class="nv-title">Viagem & Luxo</div>
-            <div class="nv-desc">Influencer de lifestyle que frequenta os melhores lugares. Rooftop no Rio, resorts 5 estrelas, experiÃªncias exclusivas.</div>
-            <div class="nv-tags"><span class="nv-tag">Travel</span><span class="nv-tag">Luxo</span></div>
-          </div>
-        </div>
-
-        <div class="nv-card span2">
-          <img src="assets/images/nicho_moda.jpeg" alt="Moda SÃ£o Paulo" />
-          <div class="nv-overlay"></div>
-          <div class="nv-content">
-            <div class="nv-niche">ðŸ‘— Moda & Fashion</div>
-            <div class="nv-title">Editorial, Looks & ColeÃ§Ãµes</div>
-            <div class="nv-desc">Qualquer estilo, qualquer marca. Do streetwear ao alto luxo â€” a influencer veste o que vocÃª precisar, onde vocÃª precisar.</div>
-            <div class="nv-tags"><span class="nv-tag">Editorial</span><span class="nv-tag">Lookbook</span><span class="nv-tag">Instagram</span></div>
-          </div>
-        </div>
-
-        <div class="nv-card">
-          <img src="assets/images/nicho_beleza.jpeg" alt="Beleza Wellness" />
-          <div class="nv-overlay"></div>
-          <div class="nv-content">
-            <div class="nv-niche">ðŸ’† Beleza & Wellness</div>
-            <div class="nv-title">Skincare, Spa & EstÃ©tica</div>
-            <div class="nv-desc">Skincare, spa, estÃ©tica e bem-estar. Produto na mÃ£o, antes e depois â€” conteÃºdo que gera agendamentos.</div>
-            <div class="nv-tags"><span class="nv-tag">Skincare</span><span class="nv-tag">EstÃ©tica</span></div>
-          </div>
-        </div>
-
-        <div class="nv-card">
-          <img src="assets/images/camarote_vip_estadio.jpeg" alt="Camarote VIP EstÃ¡dio" />
-          <div class="nv-overlay"></div>
-          <div class="nv-content">
-            <div class="nv-niche">âš½ Eventos & Esportes</div>
-            <div class="nv-title">Camarote VIP & ExperiÃªncias Exclusivas</div>
-            <div class="nv-desc">Camarote VIP com vista do campo, Copa do Mundo â€” experiÃªncias que custam R$50k+ de patrocÃ­nio, geradas por IA.</div>
-            <div class="nv-tags"><span class="nv-tag">Eventos</span><span class="nv-tag">VIP</span><span class="nv-tag">Stories</span></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="nv-cta-row reveal">
-        <p><strong>NÃ£o encontrou seu segmento?</strong> Criamos para qualquer nicho â€” educaÃ§Ã£o, imÃ³veis, pet, saÃºde, tecnologia, varejo e muito mais.</p>
-        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Quero%20criar%20uma%20influencer%20IA%20para%20o%20meu%20nicho." target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap; font-size:0.88rem; padding:0.75rem 1.5rem;">
-          Falar sobre meu nicho â†’
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO FILTRADO -->
-  <section class="case-bg" id="portfolio">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:2rem;">
-        <div class="tag">Portfolio â€” 100% gerado por IA</div>
-        <h2 class="section-h">Escolha um nicho e <span class="g">veja o resultado</span></h2>
-        <p class="section-sub" style="margin:0 auto;">Clique em qualquer categoria. Cada imagem foi criada do zero com inteligÃªncia artificial â€” sem fotografia real, sem modelo contratada.</p>
-      </div>
-
-      <div class="gallery-filters reveal">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="fitness">ðŸ’ª Fitness</button>
-        <button class="filter-btn" data-filter="gastronomia">ðŸ½ï¸ Gastronomia</button>
-        <button class="filter-btn" data-filter="moda">ðŸ‘— Moda</button>
-        <button class="filter-btn" data-filter="lifestyle">ðŸŒ† Lifestyle</button>
-        <button class="filter-btn" data-filter="viagem">âœˆï¸ Viagem</button>
-        <button class="filter-btn" data-filter="automobilismo">ðŸŽï¸ Automobilismo</button>
-        <button class="filter-btn" data-filter="eventos">ðŸŽ¤ Eventos</button>
-        <button class="filter-btn" data-filter="beleza">ðŸ’† Beleza</button>
-        <button class="filter-btn" data-filter="trabalho">ðŸ’¼ Trabalho</button>
-      </div>
-
-      <div class="gallery-grid reveal" id="galleryGrid">
-        <div class="gi" data-cat="automobilismo">
-          <img src="assets/images/nicho_auto.jpeg" alt="Automobilismo" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸŽï¸ Automobilismo Â· Red Bull Racing</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="lifestyle">
-          <img src="assets/images/nicho_lifestyle.jpeg" alt="Lifestyle Rio" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸŒ† Lifestyle Â· Rio de Janeiro</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="viagem">
-          <img src="assets/images/nicho_travel.jpeg" alt="Viagem Luxo" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">âœˆï¸ Viagem Â· Hotel de Luxo, Rio</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="viagem lifestyle">
-          <img src="assets/images/miami_hotel_pool.jpeg" alt="Piscina Hotel Miami" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">âœˆï¸ Viagem Â· Hotel de Luxo, Miami</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="fitness">
-          <img src="assets/images/nicho_fitness.jpeg" alt="Fitness Academia" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ’ª Fitness Â· Academia SP</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="fitness">
-          <img src="assets/images/allanis_case_sm1.jpeg" alt="Fitness PÃ³s-treino" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ’ª Fitness Â· PÃ³s-treino</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="gastronomia">
-          <img src="assets/images/nicho_gastro.jpeg" alt="Gastronomia Sushi" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ£ Gastronomia Â· Omakase</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="gastronomia">
-          <img src="assets/images/nicho_cafe.jpeg" alt="Padaria CafÃ©" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">â˜• Gastronomia Â· CafÃ© da ManhÃ£</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="viagem lifestyle">
-          <img src="assets/images/miami_south_beach.jpeg" alt="South Beach Miami" loading="lazy" style="object-position: 50% 5%;" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ–ï¸ Viagem Â· South Beach, Miami</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="beleza">
-          <img src="assets/images/nicho_beleza.jpeg" alt="Beleza Wellness" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ’† Beleza Â· Spa Luxo</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="lifestyle viagem">
-          <img src="assets/images/allanis_hero.jpeg" alt="Lifestyle Viagem" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸŒ… Lifestyle Â· Praia do Espelho, BA</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="moda lifestyle">
-          <img src="assets/images/nicho_corporativo.jpeg" alt="Corporativo" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ’¼ Corporativo Â· SÃ£o Paulo</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="eventos lifestyle">
-          <img src="assets/images/miami_noite_saida.jpeg" alt="Noite Miami prÃ©-jogo" loading="lazy" style="object-position: 50% 5%;" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸŒƒ Lifestyle Â· Noite, Miami</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="eventos">
-          <img src="assets/images/miami_estadio_brasil.jpeg" alt="EstÃ¡dio Brasil Copa" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ‡§ðŸ‡· Eventos Â· Copa do Mundo, Miami</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="eventos">
-          <img src="assets/images/camarote_vip_estadio.jpeg" alt="Camarote VIP EstÃ¡dio" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸŽ–ï¸ Eventos Â· Camarote VIP, Philadelphia</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="gastronomia">
-          <img src="assets/images/philadelphia_market.jpeg" alt="Reading Terminal Market" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ¥ Gastronomia Â· Reading Market, Philadelphia</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="trabalho">
-          <img src="assets/images/trabalho_app_rooftop.jpeg" alt="App marketing rooftop SP" loading="lazy" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸ“± Marketing Â· Rooftop, SÃ£o Paulo</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="viagem lifestyle">
-          <img src="assets/images/miami_pool_amarelo.jpeg" alt="Piscina Miami maio amarelo" loading="lazy" style="object-position: 50% 5%;" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">ðŸŠ Viagem Â· Piscina Hotel, Miami</div>
-          <div class="gi-ai">IA</div>
-        </div>
-        <div class="gi" data-cat="viagem lifestyle">
-          <img src="assets/images/miami_aeroporto.jpeg" alt="Aeroporto embarque Miami" loading="lazy" style="object-position: 50% 5%;" />
-          <div class="gi-overlay"></div>
-          <div class="gi-tag">âœˆï¸ Viagem Â· Embarque para Miami</div>
-          <div class="gi-ai">IA</div>
-        </div>
-      </div>
-      <p class="gallery-note">Passe o mouse sobre as fotos Â· Todas geradas 100% por IA Â· Nenhuma pessoa real envolvida</p>
-    </div>
-  </section>
-
-  <!-- CELEBRIDADES -->
-  <section id="celebridades" style="background:var(--bg);">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:2.5rem;">
-        <div class="tag">Ela vai onde a marca precisar</div>
-        <h2 class="section-h">Selfie com Messi. EstÃºdio da Caze. <span class="g">Sem cachÃª. Sem agenda.</span></h2>
-        <p class="section-sub" style="margin:0 auto;">Com IA, a sua influencer pode aparecer com qualquer celebridade, em qualquer evento, em qualquer lugar do mundo. Isso nÃ£o Ã© ediÃ§Ã£o â€” Ã© o poder real do que fazemos.</p>
-      </div>
-
-      <div class="celeb-grid reveal">
-
-        <div class="celeb-card">
-          <img src="assets/images/celeb_messi.jpeg" alt="Allanis com Messi" loading="lazy" />
-          <div class="celeb-overlay"></div>
-          <div class="celeb-caption">
-            <span class="celeb-handle">@allanisduarte</span>
-            <span class="celeb-text">Selfie com o GOAT na Copa ðŸâš½ #FIFAWorldCup2026</span>
-          </div>
-          <div class="celeb-badge">ðŸ”¥ Viral</div>
-        </div>
-
-        <div class="celeb-card">
-          <img src="assets/images/celeb_travis.jpeg" alt="Allanis com Travis Scott" loading="lazy" />
-          <div class="celeb-overlay"></div>
-          <div class="celeb-caption">
-            <span class="celeb-handle">@allanisduarte</span>
-            <span class="celeb-text">Nos bastidores com Travis Scott ðŸŽ¤ðŸ‡§ðŸ‡· #WorldCup</span>
-          </div>
-          <div class="celeb-badge">ðŸ”¥ Viral</div>
-        </div>
-
-        <div class="celeb-card">
-          <img src="assets/images/celeb_cazetv.jpeg" alt="Allanis na Caze TV" loading="lazy" />
-          <div class="celeb-overlay"></div>
-          <div class="celeb-caption">
-            <span class="celeb-handle">@allanisduarte</span>
-            <span class="celeb-text">Ao vivo na Caze TV cobrindo o Brasil ðŸ“ºðŸŸ¡ #CazeCopa</span>
-          </div>
-          <div class="celeb-badge">ðŸ“º TV</div>
-        </div>
-
-        <div class="celeb-card">
-          <img src="assets/images/celeb_mascote.jpeg" alt="Allanis com Canarinho" loading="lazy" />
-          <div class="celeb-overlay"></div>
-          <div class="celeb-caption">
-            <span class="celeb-handle">@allanisduarte</span>
-            <span class="celeb-text">Com o Canarinho! ðŸ’› Meu mascote favorito da Copa ðŸ¦</span>
-          </div>
-          <div class="celeb-badge">ðŸ¦ Copa</div>
-        </div>
-
-      </div>
-
-      <div class="celeb-bottom reveal">
-        <div class="celeb-bottom-pill">
-          <span style="font-size:1.3rem;">ðŸ¤¯</span>
-          <div>
-            <strong style="color:var(--white); display:block; font-size:0.95rem;">100% gerado por IA â€” nenhum encontro real aconteceu</strong>
-            <span style="color:var(--muted2); font-size:0.83rem;">A sua influencer pode aparecer ao lado de qualquer pessoa, em qualquer evento, no mundo inteiro</span>
-          </div>
-        </div>
-        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20as%20fotos%20com%20celebridades%20e%20quero%20saber%20mais%20sobre%20a%20influencer%20IA." target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap; font-size:0.88rem; padding:0.75rem 1.5rem; flex-shrink:0;">
-          Quero para minha marca â†’
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE VIDEO: ROTA FLASH -->
-  <section id="case-video">
-    <div class="container">
-      <div class="reveal" style="margin-bottom:3rem;">
-        <div class="tag">Case real â€” Comercial de marca com IA</div>
-        <h2 class="section-h">Rota Flash Ã— Allanis â€” <span class="g">um comercial gerado 100% por IA</span></h2>
-      </div>
-      <div class="video-case-wrap reveal">
-        <div class="video-wrap">
-          <div class="video-badge">â–¶ Comercial real</div>
-          <video autoplay muted loop playsinline>
-            <source src="assets/videos/rotaflash.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="case-info">
-          <div class="case-chip">âœ¦ Parceria real â€” startup de logÃ­stica</div>
-          <h3 style="font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; letter-spacing:-1px; margin-bottom:1rem; line-height:1.15;">Uma startup pagou uma influencer IA para fazer o comercial dela</h3>
-          <p style="color:var(--muted2); line-height:1.75; margin-bottom:2rem;">A Rota Flash precisava de uma porta-voz para divulgar o app nas redes. Em vez de contratar uma influencer real, criou a Allanis Duarte â€” voz clonada, rosto 100% consistente, vÃ­deo pronto em 48 horas. Custo 10Ã— menor que uma produÃ§Ã£o tradicional.</p>
-          <div class="case-metrics">
-            <div class="metric"><span class="metric-val">48h</span><div class="metric-label">briefing ao vÃ­deo pronto</div></div>
-            <div class="metric"><span class="metric-val">R$0</span><div class="metric-label">cachÃª de modelo</div></div>
-            <div class="metric"><span class="metric-val">3</span><div class="metric-label">plataformas publicadas</div></div>
-            <div class="metric"><span class="metric-val">100%</span><div class="metric-label">gerado por IA</div></div>
-          </div>
-          <ul class="check-list">
-            <li><span class="ck">âœ“</span> Roteiro criado por IA com a linguagem da marca</li>
-            <li><span class="ck">âœ“</span> Voz clonada da Allanis em portuguÃªs brasileiro</li>
-            <li><span class="ck">âœ“</span> Rosto e identidade visual 100% consistentes</li>
-            <li><span class="ck">âœ“</span> Publicado no Instagram, TikTok e Facebook automaticamente</li>
-          </ul>
-          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20case%20da%20Rota%20Flash%20e%20quero%20um%20comercial%20assim%20para%20minha%20marca." target="_blank" rel="noopener" class="btn-primary" style="margin-top:1.5rem; display:inline-flex;">
-            <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-            Quero um comercial assim
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE STUDY -->
-  <section class="case-bg" id="portfolio-old" style="display:none;">
-    <div class="container">
-      <div class="reveal" style="margin-bottom:3rem;">
-        <div class="tag">PortfÃ³lio â€” Caso real</div>
-        <h2 class="section-h">Allanis Duarte â€” <span class="g">criada do zero por nÃ³s</span></h2>
-      </div>
-      <div class="case-wrap">
-        <div class="case-gallery reveal">
-          <img class="img-main" src="assets/images/allanis_case_03.jpg" alt="Allanis Duarte â€” Zeira23 Studio" />
-          <img class="img-sm" src="assets/images/allanis_case_01.png" alt="Allanis â€” identidade visual" />
-          <img class="img-sm" src="assets/images/allanis_case_02.png" alt="Allanis â€” cenÃ¡rio externo" />
-        </div>
-        <div class="case-info reveal" style="transition-delay:0.15s">
-          <div class="case-chip">âœ¦ Case completo</div>
-          <h3>Influencer IA criada do zero para uma startup de logÃ­stica</h3>
-          <p>A Allanis Duarte Ã© uma influencer 100% gerada por inteligÃªncia artificial, desenvolvida pela Zeira23 Studio. Identidade visual consistente, voz clonada em portuguÃªs brasileiro e conteÃºdo automatizado nas 3 principais redes sociais â€” sem uma Ãºnica pessoa por trÃ¡s do personagem.</p>
-          <div class="case-metrics">
-            <div class="metric">
-              <span class="metric-val">3</span>
-              <div class="metric-label">plataformas ativas</div>
-            </div>
-            <div class="metric">
-              <span class="metric-val">7 dias</span>
-              <div class="metric-label">do briefing ao ar</div>
-            </div>
-            <div class="metric">
-              <span class="metric-val">100%</span>
-              <div class="metric-label">postagem automÃ¡tica</div>
-            </div>
-            <div class="metric">
-              <span class="metric-val">R$0</span>
-              <div class="metric-label">gasto com influencer</div>
-            </div>
-          </div>
-          <ul class="check-list">
-            <li><span class="ck">âœ“</span> Identidade facial e visual consistente em todos os conteÃºdos</li>
-            <li><span class="ck">âœ“</span> Voz clonada em portuguÃªs brasileiro para todos os vÃ­deos</li>
-            <li><span class="ck">âœ“</span> Postagem automÃ¡tica no Instagram, Facebook e TikTok</li>
-            <li><span class="ck">âœ“</span> CalendÃ¡rio editorial mensal com fotos, reels e legendas</li>
-            <li><span class="ck">âœ“</span> EstratÃ©gia de crescimento orientada por dados reais</li>
-          </ul>
-          <a href="https://www.instagram.com/allanisduarte/" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex; margin-top:0.5rem;">
-            Ver Allanis no Instagram â†’
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLANS -->
-  <section id="planos">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
-        <div class="tag">Investimento</div>
-        <h2 class="section-h">Planos <span class="g">sem complicaÃ§Ã£o</span></h2>
-        <p class="section-sub" style="margin:0 auto;">Sem contrato longo. Sem taxa surpresa. VocÃª paga pelo que precisa e para quando quiser.</p>
-      </div>
-      <div class="scarcity-bar reveal">
-        <div class="scarcity-dot"></div>
-        Apenas <span class="hl">2 vagas disponÃ­veis</span> em julho Â· Clientes em lista de espera jÃ¡ aguardam
-      </div>
-      <div class="plans-grid">
-
-        <div class="plan reveal">
-          <div class="plan-name">GestÃ£o IA</div>
-          <div class="plan-price">R$1.500 <sub>/mÃªs</sub></div>
-          <div class="plan-period">ConteÃºdo com IA para quem jÃ¡ tem perfil</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-items">
-            <li><span class="ico">âœ¦</span> 20 conteÃºdos mensais (fotos, reels e legendas)</li>
-            <li><span class="ico">âœ¦</span> CalendÃ¡rio editorial mensal</li>
-            <li><span class="ico">âœ¦</span> Postagem automÃ¡tica configurada</li>
-            <li><span class="ico">âœ¦</span> RelatÃ³rio mensal de resultados</li>
-            <li><span class="ico">âœ¦</span> Suporte via WhatsApp</li>
-          </ul>
-          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Gest%C3%A3o%20IA%20da%20Zeira23%20Studio." target="_blank" rel="noopener" class="btn-plan btn-plan-outline">Falar no WhatsApp</a>
-        </div>
-
-        <div class="plan hot reveal" style="transition-delay:0.1s">
-          <div class="plan-top-badge">âœ¦ Mais completo</div>
-          <div class="plan-name">Influencer IA</div>
-          <div class="plan-price">R$2.500 <sub>/mÃªs</sub></div>
-          <div class="plan-period">Personagem exclusivo + gestÃ£o completa</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-items">
-            <li><span class="ico">âœ¦</span> CriaÃ§Ã£o do personagem exclusivo da marca</li>
-            <li><span class="ico">âœ¦</span> Identidade visual Ãºnica e voz clonada</li>
-            <li><span class="ico">âœ¦</span> 30 conteÃºdos personalizados por mÃªs</li>
-            <li><span class="ico">âœ¦</span> Postagem automÃ¡tica em 3 plataformas</li>
-            <li><span class="ico">âœ¦</span> EstratÃ©gia editorial + calendÃ¡rio mensal</li>
-            <li><span class="ico">âœ¦</span> RelatÃ³rio semanal de crescimento</li>
-            <li><span class="ico">âœ¦</span> Suporte prioritÃ¡rio via WhatsApp</li>
-          </ul>
-          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Influencer%20IA%20da%20Zeira23%20Studio." target="_blank" rel="noopener" class="btn-plan btn-plan-grad">Quero esse plano</a>
-        </div>
-
-        <div class="plan reveal" style="transition-delay:0.2s">
-          <div class="plan-name">Setup Ãšnico</div>
-          <div class="plan-price">R$500 <sub>Ãºnico</sub></div>
-          <div class="plan-period">Taxa Ãºnica de criaÃ§Ã£o e configuraÃ§Ã£o</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-items">
-            <li><span class="ico">âœ¦</span> CriaÃ§Ã£o da identidade do personagem</li>
-            <li><span class="ico">âœ¦</span> ConfiguraÃ§Ã£o dos perfis nas redes</li>
-            <li><span class="ico">âœ¦</span> Sistema de postagem automÃ¡tica</li>
-            <li><span class="ico">âœ¦</span> Primeiros 5 conteÃºdos inclusos</li>
-          </ul>
-          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Setup%20da%20Zeira23%20Studio." target="_blank" rel="noopener" class="btn-plan btn-plan-outline">Falar no WhatsApp</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="problema-bg" id="faq">
-    <div class="container">
-      <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
-        <div class="tag">Perguntas frequentes</div>
-        <h2 class="section-h">Tudo que vocÃª <span class="g">quer saber</span></h2>
-      </div>
-      <div class="faq-list reveal">
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>Meus clientes vÃ£o saber que Ã© inteligÃªncia artificial?</span>
-            <span class="faq-arrow">â†“</span>
-          </button>
-          <div class="faq-a">
-            <p>NÃ£o necessariamente. A qualidade visual das nossas influencers IA Ã© indistinguÃ­vel de uma pessoa real para o olho humano comum. VocÃª decide se quer ser transparente sobre isso ou nÃ£o â€” muitos clientes preferem manter discriÃ§Ã£o, outros usam isso como diferencial inovador da marca.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>Ã‰ legal usar influencer IA para divulgar meu negÃ³cio?</span>
-            <span class="faq-arrow">â†“</span>
-          </button>
-          <div class="faq-a">
-            <p>Sim. O personagem Ã© criado do zero, nÃ£o copia nenhuma pessoa real existente. NÃ£o hÃ¡ violaÃ§Ã£o de imagem ou direito autoral. Diversas marcas internacionais jÃ¡ usam avatares e influencers digitais como estratÃ©gia oficial de marketing.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>Preciso ter conta nas redes sociais ou vocÃªs criam tudo?</span>
-            <span class="faq-arrow">â†“</span>
-          </button>
-          <div class="faq-a">
-            <p>Criamos tudo do zero â€” perfil, bio, foto, identidade visual e o sistema de postagem automÃ¡tica. VocÃª sÃ³ precisa nos dar o briefing do seu negÃ³cio. Se jÃ¡ tiver perfil, adaptamos o personagem para ele.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>Quanto tempo leva para o personagem estar pronto e postando?</span>
-            <span class="faq-arrow">â†“</span>
-          </button>
-          <div class="faq-a">
-            <p>Em mÃ©dia 7 dias corridos da aprovaÃ§Ã£o do briefing atÃ© o primeiro post no ar. A identidade visual (rosto, cabelo, estilo) fica pronta em 48h. O restante do prazo Ã© para criar o banco de conteÃºdo inicial e configurar a automaÃ§Ã£o.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>Posso cancelar quando quiser?</span>
-            <span class="faq-arrow">â†“</span>
-          </button>
-          <div class="faq-a">
-            <p>Sim. NÃ£o hÃ¡ fidelidade ou multa de cancelamento. VocÃª avisa com 30 dias de antecedÃªncia e encerramos sem burocracia. Todo o material produzido durante o contrato fica com vocÃª.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>O personagem Ã© exclusivo ou pode ser usado por outro cliente?</span>
-            <span class="faq-arrow">â†“</span>
-          </button>
-          <div class="faq-a">
-            <p>100% exclusivo. Cada influencer IA Ã© criada especificamente para uma marca e nunca Ã© reaproveitada ou cedida a outro cliente. O personagem Ã© seu.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-inner reveal">
-      <h2>Pronto para sua <span class="g">influencer IA?</span></h2>
-      <p>Fale com a gente agora pelo WhatsApp. Sem compromisso, sem enrolaÃ§Ã£o. Conta o que seu negÃ³cio precisa e mostramos o caminho.</p>
-      <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Zeira23%20Studio%20e%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" class="btn-wpp">
-        <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
-        Falar agora no WhatsApp
-      </a>
-      <p class="cta-note">Luis Fernando Â· Zeira23 Studio Â· SÃ£o Paulo, SP</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>Â© 2026 <span class="logo">Zeira23 Studio</span> â€” Todos os direitos reservados Â· SÃ£o Paulo, SP</p>
-  </footer>
-
-  <script>
-    // Nav scroll
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => io.observe(el));
-
-    // FAQ accordion
-    function toggleFaq(btn) {
-      const answer = btn.nextElementSibling;
-      const isOpen = btn.classList.contains('open');
-      document.querySelectorAll('.faq-q.open').forEach(b => {
-        b.classList.remove('open');
-        b.nextElementSibling.classList.remove('open');
-      });
-      if (!isOpen) {
-        btn.classList.add('open');
-        answer.classList.add('open');
-      }
-    }
-
-    // Gallery filter
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('#galleryGrid .gi').forEach(item => {
-          const cats = item.dataset.cat || '';
-          item.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
-        });
-      });
-    });
-
-    // Count up
-    const counters = document.querySelectorAll('[data-count]');
-    const cio = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const target = +el.dataset.count;
-        const suffix = el.dataset.suffix || '';
-        let start = 0;
-        const step = Math.ceil(target / 40);
-        const timer = setInterval(() => {
-          start = Math.min(start + step, target);
-          el.textContent = start + suffix;
-          if (start >= target) clearInterval(timer);
-        }, 30);
-        cio.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(el => cio.observe(el));
-  </script>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeira23 Studio — Influencers IA para sua marca</title>
+  <meta name="description" content="Criamos influencers de inteligência artificial exclusivas para a sua marca. Identidade visual, voz clonada e conteúdo mensal automatizado. Sem pagar influencer real." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #050507;
+      --bg2: #0a0a0f;
+      --card: #0f0f18;
+      --card2: #141420;
+      --border: rgba(255,255,255,0.06);
+      --border2: rgba(255,255,255,0.1);
+      --p1: #a855f7;
+      --p2: #ec4899;
+      --p3: #6366f1;
+      --grad: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+      --grad2: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --text: #e8e8f0;
+      --muted: #6b7280;
+      --muted2: #9ca3af;
+      --white: #ffffff;
+      --green: #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NOISE TEXTURE */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* GRADIENT ORBS */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: rgba(168,85,247,0.12); top: -100px; left: -150px; animation-delay: 0s; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(236,72,153,0.1); bottom: 10%; right: -100px; animation-delay: -3s; }
+    .orb-3 { width: 300px; height: 300px; background: rgba(99,102,241,0.08); top: 50%; left: 40%; animation-delay: -6s; }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      transition: all 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(5,5,7,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted2);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .btn-nav-wpp {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      padding: 0.6rem 1.3rem;
+      border-radius: 50px;
+      text-decoration: none !important;
+      transition: all 0.2s !important;
+      box-shadow: 0 0 20px rgba(37,211,102,0.3);
+    }
+    .btn-nav-wpp:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 7rem 2.5rem 5rem;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--p1);
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--p1);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .hero h1 .grad-text {
+      background: var(--grad2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted2);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--grad);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 0 30px rgba(168,85,247,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(168,85,247,0.5); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 1px solid var(--border2);
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover { color: var(--white); border-color: var(--p1); }
+
+    /* HERO VISUAL */
+    .hero-visual {
+      position: relative;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .hero-img-glow {
+      position: absolute;
+      inset: -20px;
+      background: var(--grad);
+      border-radius: 32px;
+      filter: blur(40px);
+      opacity: 0.25;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.2; transform: scale(0.98); }
+      50% { opacity: 0.35; transform: scale(1.02); }
+    }
+
+    .hero-img-border {
+      position: relative;
+      padding: 2px;
+      background: var(--grad);
+      border-radius: 28px;
+      z-index: 1;
+    }
+
+    .hero-img-border img {
+      width: 100%;
+      border-radius: 26px;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+    }
+
+    /* FLOATING CARDS */
+    .float-card {
+      position: absolute;
+      background: rgba(15,15,24,0.9);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border2);
+      border-radius: 16px;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      z-index: 2;
+      white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      animation: floatAnim 4s ease-in-out infinite;
+    }
+
+    .float-card-1 { top: 10%; right: -20px; animation-delay: 0s; }
+    .float-card-2 { bottom: 15%; left: -20px; animation-delay: -2s; }
+
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .float-icon { font-size: 1.6rem; }
+    .float-text { font-size: 0.8rem; }
+    .float-text strong { display: block; font-size: 0.9rem; color: var(--white); font-weight: 700; }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--green);
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 50px;
+      padding: 0.2rem 0.6rem;
+      margin-top: 0.2rem;
+    }
+    .badge-live::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.5s infinite;
+    }
+
+    /* NUMBERS BAR */
+    .numbers-bar {
+      padding: 3rem 2.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .numbers-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .num-item { text-align: center; }
+
+    .num-value {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .num-label { font-size: 0.85rem; color: var(--muted2); margin-top: 0.3rem; }
+
+    /* SECTIONS */
+    section { position: relative; z-index: 1; padding: 6rem 2.5rem; }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--p1);
+      margin-bottom: 1rem;
+    }
+
+    .section-h {
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .section-h .g { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .section-sub { color: var(--muted2); font-size: 1.05rem; line-height: 1.7; max-width: 600px; margin-bottom: 3.5rem; }
+
+    /* PROBLEMA */
+    .problema-bg { background: var(--bg2); }
+
+    .problema-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .prob-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prob-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--grad);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .prob-card:hover { border-color: rgba(168,85,247,0.2); transform: translateY(-4px); }
+    .prob-card:hover::before { opacity: 1; }
+
+    .prob-emoji { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+    .prob-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .prob-card p { color: var(--muted2); font-size: 0.9rem; line-height: 1.65; }
+
+    /* STEPS */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .step-item {
+      background: var(--card);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .step-item:hover { background: var(--card2); }
+
+    .step-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 1rem;
+      letter-spacing: -3px;
+    }
+
+    .step-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .step-item p { color: var(--muted2); font-size: 0.88rem; line-height: 1.65; }
+
+    /* CASE STUDY */
+    .case-bg { background: var(--bg2); }
+
+    .case-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .case-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+
+    .case-gallery img {
+      width: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      transition: transform 0.3s;
+    }
+    .case-gallery img:hover { transform: scale(1.02); }
+
+    .case-gallery .img-main {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    .case-gallery .img-sm { aspect-ratio: 3/4; }
+
+    .case-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--p1);
+      margin-bottom: 1.2rem;
+    }
+
+    .case-info h3 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .case-info p { color: var(--muted2); line-height: 1.75; margin-bottom: 2rem; }
+
+    .case-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.2rem;
+      transition: all 0.3s;
+    }
+    .metric:hover { border-color: rgba(168,85,247,0.3); }
+
+    .metric-val {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .metric-label { font-size: 0.8rem; color: var(--muted2); margin-top: 0.2rem; }
+
+    .check-list { list-style: none; }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--muted2);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .check-list li .ck {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(168,85,247,0.15);
+      border: 1px solid rgba(168,85,247,0.3);
+      color: var(--p1);
+      font-size: 0.65rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* PLANS */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .plan {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .plan:hover { transform: translateY(-4px); }
+
+    .plan.hot {
+      background: linear-gradient(145deg, #120d1e, #1a0d28);
+      border-color: rgba(168,85,247,0.4);
+      box-shadow: 0 0 60px rgba(168,85,247,0.15);
+    }
+
+    .plan-top-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--grad);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.3rem 1.2rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted2);
+      margin-bottom: 0.75rem;
+    }
+
+    .plan-price {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .plan-price sub {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted2);
+      letter-spacing: 0;
+      vertical-align: baseline;
+    }
+
+    .plan-period { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    .plan-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-desc { color: var(--muted2); font-size: 0.88rem; line-height: 1.65; margin-bottom: 1.5rem; }
+
+    .plan-items { list-style: none; margin-bottom: 2rem; }
+    .plan-items li {
+      display: flex;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+      align-items: flex-start;
+    }
+    .plan-items .ico {
+      color: var(--p1);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .btn-plan {
+      display: block;
+      text-align: center;
+      padding: 0.9rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-plan-outline { border: 1px solid var(--border2); color: var(--text); }
+    .btn-plan-outline:hover { border-color: var(--p1); color: var(--p1); }
+
+    .btn-plan-grad { background: var(--grad); color: #fff; box-shadow: 0 0 30px rgba(168,85,247,0.3); }
+    .btn-plan-grad:hover { box-shadow: 0 4px 40px rgba(168,85,247,0.5); transform: translateY(-2px); }
+
+    /* CTA */
+    .cta-section { padding: 6rem 2.5rem; background: var(--bg2); }
+
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 40px;
+      padding: 5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(168,85,247,0.2), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .cta-inner p {
+      color: var(--muted2);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .btn-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: #25D366;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 1.1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 0 40px rgba(37,211,102,0.35);
+      position: relative;
+    }
+    .btn-wpp:hover { transform: translateY(-3px); box-shadow: 0 8px 50px rgba(37,211,102,0.5); }
+
+    .cta-note { margin-top: 1.2rem; font-size: 0.82rem; color: var(--muted); }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    footer .logo { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* NICHOS */
+    .nicho-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .nicho-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nicho-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .nicho-card:hover {
+      border-color: rgba(168,85,247,0.25);
+      transform: translateY(-4px);
+      background: var(--card2);
+    }
+    .nicho-card:hover::before { opacity: 1; }
+
+    .nicho-card-plus {
+      background: linear-gradient(145deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
+      border-color: rgba(168,85,247,0.3);
+    }
+    .nicho-card-plus::before { opacity: 1; }
+
+    .nicho-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .nicho-body h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .nicho-body p {
+      font-size: 0.83rem;
+      color: var(--muted2);
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
+    }
+
+    .nicho-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .nicho-tags span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.2);
+      color: var(--p1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+    }
+
+    .nicho-cta {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--p1);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nicho-cta:hover { color: var(--p2); }
+
+    @media (max-width: 900px) {
+      .nicho-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .nicho-grid { grid-template-columns: 1fr; }
+    }
+
+    /* NICHOS VISUAL BENTO */
+    .nv-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 290px;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .nv-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .nv-card.span2 { grid-column: span 2; }
+    .nv-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .nv-card:hover img { transform: scale(1.07); }
+    .nv-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 35%, rgba(0,0,0,0.1) 70%);
+    }
+    .nv-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+    }
+    .nv-niche {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--p1);
+      margin-bottom: 0.35rem;
+    }
+    .nv-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+    .nv-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.55;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, margin 0.3s;
+    }
+    .nv-card:hover .nv-desc { max-height: 80px; margin-top: 0.5rem; }
+    .nv-tags {
+      display: flex; gap: 0.4rem; flex-wrap: wrap;
+      margin-top: 0.7rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .nv-card:hover .nv-tags { opacity: 1; }
+    .nv-tag {
+      font-size: 0.62rem; font-weight: 700;
+      background: rgba(168,85,247,0.35);
+      border: 1px solid rgba(168,85,247,0.5);
+      color: #e8d5ff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+    }
+    .nv-cta-row {
+      background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nv-cta-row p { color: var(--muted2); font-size: 0.9rem; margin: 0; }
+    .nv-cta-row strong { color: var(--white); }
+    @media (max-width: 900px) {
+      .nv-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
+      .nv-card.span2 { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .nv-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+    }
+
+    /* FAQ */
+    .faq-list { max-width: 780px; margin: 0 auto; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--p1); }
+
+    .faq-arrow {
+      font-size: 1rem;
+      color: var(--p1);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      display: inline-block;
+    }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-a.open { max-height: 300px; padding-bottom: 1.5rem; }
+    .faq-a p { color: var(--muted2); font-size: 0.93rem; line-height: 1.75; }
+
+    /* SCARCITY BADGE */
+    .scarcity-bar {
+      background: linear-gradient(135deg, rgba(168,85,247,0.12), rgba(236,72,153,0.08));
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .scarcity-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #f97316;
+      animation: pulse 1.5s infinite;
+      flex-shrink: 0;
+    }
+    .scarcity-bar span.hl { color: #f97316; font-weight: 800; }
+
+    /* GALLERY FILTERS */
+    .gallery-filters {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid var(--border2);
+      background: transparent;
+      color: var(--muted2);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .filter-btn:hover { color: var(--white); border-color: rgba(168,85,247,0.4); }
+    .filter-btn.active { background: var(--grad); border-color: transparent; color: #fff; box-shadow: 0 0 20px rgba(168,85,247,0.3); }
+
+    /* GALLERY GRID */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .gi {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 3/4;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .gi.hidden { display: none; }
+    .gi img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .gi:hover img { transform: scale(1.07); }
+    .gi-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gi:hover .gi-overlay { opacity: 1; }
+    .gi-tag {
+      position: absolute;
+      bottom: 1rem; left: 1rem;
+      background: rgba(5,5,7,0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 50px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+    .gi:hover .gi-tag { opacity: 1; }
+    .gi-ai {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      background: rgba(168,85,247,0.88);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .gallery-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px)  { .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; } }
+
+    /* VIDEO CASE */
+    .video-case-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .video-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      box-shadow: 0 0 60px rgba(168,85,247,0.12);
+    }
+    .video-wrap video { width: 100%; display: block; }
+    .video-badge {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: rgba(168,85,247,0.92);
+      border-radius: 50px;
+      padding: 0.25rem 0.85rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    @media (max-width: 900px) { .video-case-wrap { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* CONSISTENCY GRID */
+    .cons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .cons-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/5;
+      cursor: pointer;
+    }
+    .cons-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.55s ease;
+      display: block;
+    }
+    .cons-item:hover img { transform: scale(1.06); }
+    .cons-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 25%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .cons-item:hover .cons-overlay { opacity: 1; }
+    .cons-badge {
+      position: absolute;
+      top: 0.85rem; left: 0.85rem;
+      background: rgba(168,85,247,0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.22rem 0.75rem;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .cons-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .cons-label {
+      position: absolute;
+      bottom: 1rem; left: 1rem; right: 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .cons-item:hover .cons-label { opacity: 1; }
+    .cons-proof {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cons-proof-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: 50px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .cons-proof-pill .ck2 {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    @media (max-width: 700px) {
+      .cons-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* CELEBRIDADES */
+    .celeb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .celeb-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      background: #000;
+    }
+    .celeb-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.92);
+    }
+    .celeb-card:hover img { transform: scale(1.05); filter: brightness(1); }
+    .celeb-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 30%, rgba(0,0,0,0.05) 65%);
+    }
+    .celeb-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem 1rem 1.1rem;
+    }
+    .celeb-handle {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--p1);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.5px;
+    }
+    .celeb-text {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.45;
+    }
+    .celeb-badge {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .celeb-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, rgba(168,85,247,0.07), rgba(236,72,153,0.05));
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+    }
+    .celeb-bottom-pill {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    @media (max-width: 900px) { .celeb-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px)  { .celeb-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; } }
+
+    /* SVG ICONS */
+    .ico-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero-visual { order: -1; }
+      .float-card-1 { right: 0; }
+      .float-card-2 { left: 0; }
+      .numbers-inner { grid-template-columns: repeat(2, 1fr); }
+      .problema-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .case-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .plans-grid { grid-template-columns: 1fr; }
+      section { padding: 4rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .hero h1 { font-size: 2rem; letter-spacing: -1.5px; }
+      .numbers-inner { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .cta-inner { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-logo">Zeira23 Studio</div>
+    <ul class="nav-links">
+      <li><a href="#como">Como funciona</a></li>
+      <li><a href="#consistencia">Consistência</a></li>
+      <li><a href="#nichos">Nichos</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li>
+        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Zeira23%20Studio%20e%20quero%20saber%20mais." target="_blank" rel="noopener" class="btn-nav-wpp">
+          <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          WhatsApp
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Agência de IA para marcas</div>
+        <h1>Sua marca com <span class="grad-text">rosto, voz e presença</span> nas redes sociais</h1>
+        <p>Criamos influencers de inteligência artificial exclusivas para o seu negócio — identidade visual, voz clonada e conteúdo mensal automatizado. Sem pagar influencer real.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Zeira23%20Studio%20e%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" class="btn-primary">
+            <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+            Falar agora no WhatsApp
+          </a>
+          <a href="#portfolio" class="btn-ghost">Ver portfólio →</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <div class="hero-img-glow"></div>
+          <div class="hero-img-border">
+            <img src="assets/images/allanis_hero.jpeg" alt="Allanis Duarte — Influencer IA criada pela Zeira23 Studio" style="object-position: center top;" />
+          </div>
+          <div class="float-card float-card-1">
+            <div class="float-icon">🤖</div>
+            <div class="float-text">
+              <strong>100% Inteligência Artificial</strong>
+              <span class="badge-live">postando agora</span>
+            </div>
+          </div>
+          <div class="float-card float-card-2">
+            <div class="float-icon">⚡</div>
+            <div class="float-text">
+              <strong>Pronta em 7 dias</strong>
+              identidade + voz + conteúdo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <div class="numbers-bar">
+    <div class="numbers-inner">
+      <div class="num-item reveal">
+        <span class="num-value" data-count="100">0</span>
+        <div class="num-label">% de postagem automática</div>
+      </div>
+      <div class="num-item reveal" style="transition-delay:0.1s">
+        <span class="num-value" data-count="3">0</span>
+        <div class="num-label">plataformas gerenciadas</div>
+      </div>
+      <div class="num-item reveal" style="transition-delay:0.2s">
+        <span class="num-value" data-count="7">0</span>
+        <div class="num-label">dias do zero ao ar</div>
+      </div>
+      <div class="num-item reveal" style="transition-delay:0.3s">
+        <span class="num-value">R$0</span>
+        <div class="num-label">gasto com influencer real</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMA -->
+  <section class="problema-bg">
+    <div class="container">
+      <div class="reveal">
+        <div class="tag">O problema que resolvemos</div>
+        <h2 class="section-h">Por que influencer real <span class="g">não é para todo mundo</span></h2>
+        <p class="section-sub">A maioria dos negócios quer crescer nas redes sociais, mas esbarra nas mesmas barreiras.</p>
+      </div>
+      <div class="problema-grid">
+        <div class="prob-card reveal">
+          <span class="prob-emoji">💸</span>
+          <h3>Custo proibitivo</h3>
+          <p>Uma influencer com audiência relevante cobra de R$3.000 a R$50.000 por post. Inviável para quem está começando.</p>
+        </div>
+        <div class="prob-card reveal" style="transition-delay:0.1s">
+          <span class="prob-emoji">🎲</span>
+          <h3>Falta de controle</h3>
+          <p>Você depende da agenda, do humor e da imagem de outra pessoa. Um escândalo derruba tudo que você construiu.</p>
+        </div>
+        <div class="prob-card reveal" style="transition-delay:0.2s">
+          <span class="prob-emoji">📅</span>
+          <h3>Sem consistência</h3>
+          <p>Produzir conteúdo de qualidade toda semana exige equipe, tempo e dinheiro que poucos negócios têm disponível.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
+        <div class="tag">Como funciona</div>
+        <h2 class="section-h">Do zero ao ar <span class="g">em 4 passos</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Um processo simples que entrega uma influencer exclusiva, pronta para representar a sua marca.</p>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <h3>Briefing da marca</h3>
+          <p>Entendemos o seu negócio, público-alvo, tom de voz e objetivos. Tudo por WhatsApp, sem complicação.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <h3>Criação do personagem</h3>
+          <p>Desenvolvemos a identidade visual única, personalidade e voz clonada da sua influencer IA exclusiva.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <h3>Produção de conteúdo</h3>
+          <p>Geramos fotos, reels e legendas mensalmente — alinhados com o calendário e a estratégia da sua marca.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <h3>Postagem automática</h3>
+          <p>Configuramos o sistema para publicar nos horários certos. Você não precisa fazer absolutamente nada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSISTÊNCIA -->
+  <section class="problema-bg" id="consistencia">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <div class="tag">O diferencial que muda tudo</div>
+        <h2 class="section-h">Um rosto. <span class="g">Infinitos cenários.</span></h2>
+        <p class="section-sub" style="margin:0 auto;">A identidade visual nunca muda — independente do nicho, do cenário ou do contexto. Passe o mouse nas fotos abaixo e veja: é sempre a mesma influencer. Isso é o que separa a Zeira23 de qualquer outra solução do mercado.</p>
+      </div>
+
+      <div class="cons-grid reveal">
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_fitness.jpeg" alt="Academia" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">💪 Academia · São Paulo, SP</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_gastro.jpeg" alt="Sushi" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">ðŸ£ Gastronomia · Omakase, Vila Madalena</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_auto.jpeg" alt="Red Bull F1" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">ðŸŽï¸ Patrocínio · Red Bull Racing, F1</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_cafe.jpeg" alt="Padaria" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">☕ Lifestyle · Padaria, São Paulo</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/miami_pool_tropicale.jpeg" alt="Piscina Hotel Miami" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">✈ï¸ Viagem · Hotel de Luxo, Miami</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/miami_estadio_brasil.jpeg" alt="Copa do Mundo Miami" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">🇧🇷 Eventos · Copa do Mundo, Miami</div>
+        </div>
+
+      </div>
+
+      <div class="cons-proof reveal">
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Mesmo rosto em 100% dos conteúdos</div>
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Mesma voz clonada em todos os vídeos</div>
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Qualquer cenário, qualquer nicho</div>
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Sem fotógrafo, sem modelo, sem cachê</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NICHOS -->
+  <section id="nichos">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:1.5rem;">
+        <div class="tag">Para qualquer segmento</div>
+        <h2 class="section-h">Criamos para o <span class="g">nicho da sua marca</span></h2>
+        <p class="section-sub" style="margin:0 auto 1rem;">O personagem é desenvolvido com a identidade, estilo e linguagem que o seu público já consome. A fórmula é simples: <strong style="color:var(--text)">identidade autêntica + consistência + automação</strong> = crescimento orgânico.</p>
+      </div>
+
+      <div class="nv-grid reveal">
+
+        <div class="nv-card span2">
+          <img src="assets/images/nicho_auto.jpeg" alt="Automobilismo Red Bull F1" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">ðŸŽï¸ Automobilismo</div>
+            <div class="nv-title">Patrocínio & Eventos de Alto Impacto</div>
+            <div class="nv-desc">Influencer IA dentro do pit lane da Red Bull Racing. Contratos de patrocínio que custariam R$50k+ — com IA, R$0 de cachê.</div>
+            <div class="nv-tags"><span class="nv-tag">F1</span><span class="nv-tag">Patrocínio</span><span class="nv-tag">Instagram</span></div>
+          </div>
+        </div>
+
+        <div class="nv-card">
+          <img src="assets/images/nicho_gastro.jpeg" alt="Gastronomia Sushi" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">ðŸ£ Gastronomia</div>
+            <div class="nv-title">Restaurantes & Delivery</div>
+            <div class="nv-desc">Foodie que converte direto para reservas e pedidos. Restaurante, bar, delivery — qualquer formato.</div>
+            <div class="nv-tags"><span class="nv-tag">Instagram</span><span class="nv-tag">TikTok</span></div>
+          </div>
+        </div>
+
+        <div class="nv-card">
+          <img src="assets/images/nicho_fitness.jpeg" alt="Fitness Academia" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">💪 Fitness</div>
+            <div class="nv-title">Academia & Personal</div>
+            <div class="nv-desc">Motiva, treina e vende — planos, suplementos ou aulas. Engajamento altíssimo no nicho fitness.</div>
+            <div class="nv-tags"><span class="nv-tag">Reels</span><span class="nv-tag">TikTok</span></div>
+          </div>
+        </div>
+
+        <div class="nv-card">
+          <img src="assets/images/nicho_lifestyle.jpeg" alt="Lifestyle Rio" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">🌆 Lifestyle</div>
+            <div class="nv-title">Viagem & Luxo</div>
+            <div class="nv-desc">Influencer de lifestyle que frequenta os melhores lugares. Rooftop no Rio, resorts 5 estrelas, experiências exclusivas.</div>
+            <div class="nv-tags"><span class="nv-tag">Travel</span><span class="nv-tag">Luxo</span></div>
+          </div>
+        </div>
+
+        <div class="nv-card span2">
+          <img src="assets/images/nicho_moda.jpeg" alt="Moda São Paulo" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">👗 Moda & Fashion</div>
+            <div class="nv-title">Editorial, Looks & Coleções</div>
+            <div class="nv-desc">Qualquer estilo, qualquer marca. Do streetwear ao alto luxo — a influencer veste o que você precisar, onde você precisar.</div>
+            <div class="nv-tags"><span class="nv-tag">Editorial</span><span class="nv-tag">Lookbook</span><span class="nv-tag">Instagram</span></div>
+          </div>
+        </div>
+
+        <div class="nv-card">
+          <img src="assets/images/nicho_beleza.jpeg" alt="Beleza Wellness" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">💆 Beleza & Wellness</div>
+            <div class="nv-title">Skincare, Spa & Estética</div>
+            <div class="nv-desc">Skincare, spa, estética e bem-estar. Produto na mão, antes e depois — conteúdo que gera agendamentos.</div>
+            <div class="nv-tags"><span class="nv-tag">Skincare</span><span class="nv-tag">Estética</span></div>
+          </div>
+        </div>
+
+        <div class="nv-card">
+          <img src="assets/images/camarote_vip_estadio.jpeg" alt="Camarote VIP Estádio" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">⚽ Eventos & Esportes</div>
+            <div class="nv-title">Camarote VIP & Experiências Exclusivas</div>
+            <div class="nv-desc">Camarote VIP com vista do campo, Copa do Mundo — experiências que custam R$50k+ de patrocínio, geradas por IA.</div>
+            <div class="nv-tags"><span class="nv-tag">Eventos</span><span class="nv-tag">VIP</span><span class="nv-tag">Stories</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="nv-cta-row reveal">
+        <p><strong>Não encontrou seu segmento?</strong> Criamos para qualquer nicho — educação, imóveis, pet, saúde, tecnologia, varejo e muito mais.</p>
+        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Quero%20criar%20uma%20influencer%20IA%20para%20o%20meu%20nicho." target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap; font-size:0.88rem; padding:0.75rem 1.5rem;">
+          Falar sobre meu nicho →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO FILTRADO -->
+  <section class="case-bg" id="portfolio">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:2rem;">
+        <div class="tag">Portfolio — 100% gerado por IA</div>
+        <h2 class="section-h">Escolha um nicho e <span class="g">veja o resultado</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Clique em qualquer categoria. Cada imagem foi criada do zero com inteligência artificial — sem fotografia real, sem modelo contratada.</p>
+      </div>
+
+      <div class="gallery-filters reveal">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="fitness">💪 Fitness</button>
+        <button class="filter-btn" data-filter="gastronomia">ðŸ½ï¸ Gastronomia</button>
+        <button class="filter-btn" data-filter="moda">👗 Moda</button>
+        <button class="filter-btn" data-filter="lifestyle">🌆 Lifestyle</button>
+        <button class="filter-btn" data-filter="viagem">✈ï¸ Viagem</button>
+        <button class="filter-btn" data-filter="automobilismo">ðŸŽï¸ Automobilismo</button>
+        <button class="filter-btn" data-filter="eventos">🎤 Eventos</button>
+        <button class="filter-btn" data-filter="beleza">💆 Beleza</button>
+        <button class="filter-btn" data-filter="trabalho">💼 Trabalho</button>
+      </div>
+
+      <div class="gallery-grid reveal" id="galleryGrid">
+        <div class="gi" data-cat="automobilismo">
+          <img src="assets/images/nicho_auto.jpeg" alt="Automobilismo" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">ðŸŽï¸ Automobilismo · Red Bull Racing</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="lifestyle">
+          <img src="assets/images/nicho_lifestyle.jpeg" alt="Lifestyle Rio" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🌆 Lifestyle · Rio de Janeiro</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="viagem">
+          <img src="assets/images/nicho_travel.jpeg" alt="Viagem Luxo" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">✈ï¸ Viagem · Hotel de Luxo, Rio</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="viagem lifestyle">
+          <img src="assets/images/miami_hotel_pool.jpeg" alt="Piscina Hotel Miami" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">✈ï¸ Viagem · Hotel de Luxo, Miami</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="fitness">
+          <img src="assets/images/nicho_fitness.jpeg" alt="Fitness Academia" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💪 Fitness · Academia SP</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="fitness">
+          <img src="assets/images/allanis_case_sm1.jpeg" alt="Fitness Pós-treino" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💪 Fitness · Pós-treino</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="gastronomia">
+          <img src="assets/images/nicho_gastro.jpeg" alt="Gastronomia Sushi" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">ðŸ£ Gastronomia · Omakase</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="gastronomia">
+          <img src="assets/images/nicho_cafe.jpeg" alt="Padaria Café" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">☕ Gastronomia · Café da Manhã</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="viagem lifestyle">
+          <img src="assets/images/miami_south_beach.jpeg" alt="South Beach Miami" loading="lazy" style="object-position: 50% 5%;" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">ðŸ–ï¸ Viagem · South Beach, Miami</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="beleza">
+          <img src="assets/images/nicho_beleza.jpeg" alt="Beleza Wellness" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💆 Beleza · Spa Luxo</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="lifestyle viagem">
+          <img src="assets/images/allanis_hero.jpeg" alt="Lifestyle Viagem" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🌅 Lifestyle · Praia do Espelho, BA</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="moda lifestyle">
+          <img src="assets/images/nicho_corporativo.jpeg" alt="Corporativo" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💼 Corporativo · São Paulo</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="eventos lifestyle">
+          <img src="assets/images/miami_noite_saida.jpeg" alt="Noite Miami pré-jogo" loading="lazy" style="object-position: 50% 5%;" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🌃 Lifestyle · Noite, Miami</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="eventos">
+          <img src="assets/images/miami_estadio_brasil.jpeg" alt="Estádio Brasil Copa" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🇧🇷 Eventos · Copa do Mundo, Miami</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="eventos">
+          <img src="assets/images/camarote_vip_estadio.jpeg" alt="Camarote VIP Estádio" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🎖ï¸ Eventos · Camarote VIP, Philadelphia</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="gastronomia">
+          <img src="assets/images/philadelphia_market.jpeg" alt="Reading Terminal Market" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">ðŸ¥ Gastronomia · Reading Market, Philadelphia</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="trabalho">
+          <img src="assets/images/trabalho_app_rooftop.jpeg" alt="App marketing rooftop SP" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">📱 Marketing · Rooftop, São Paulo</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="viagem lifestyle">
+          <img src="assets/images/miami_pool_amarelo.jpeg" alt="Piscina Miami maio amarelo" loading="lazy" style="object-position: 50% 5%;" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">ðŸŠ Viagem · Piscina Hotel, Miami</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="viagem lifestyle">
+          <img src="assets/images/miami_aeroporto.jpeg" alt="Aeroporto embarque Miami" loading="lazy" style="object-position: 50% 5%;" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">✈ï¸ Viagem · Embarque para Miami</div>
+          <div class="gi-ai">IA</div>
+        </div>
+      </div>
+      <p class="gallery-note">Passe o mouse sobre as fotos · Todas geradas 100% por IA · Nenhuma pessoa real envolvida</p>
+    </div>
+  </section>
+
+  <!-- CELEBRIDADES -->
+  <section id="celebridades" style="background:var(--bg);">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:2.5rem;">
+        <div class="tag">Ela vai onde a marca precisar</div>
+        <h2 class="section-h">Selfie com Messi. Estúdio da Caze. <span class="g">Sem cachê. Sem agenda.</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Com IA, a sua influencer pode aparecer com qualquer celebridade, em qualquer evento, em qualquer lugar do mundo. Isso não é edição — é o poder real do que fazemos.</p>
+      </div>
+
+      <div class="celeb-grid reveal">
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_messi.jpeg" alt="Allanis com Messi" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Selfie com o GOAT na Copa ðŸ⚽ #FIFAWorldCup2026</span>
+          </div>
+          <div class="celeb-badge">🔥 Viral</div>
+        </div>
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_travis.jpeg" alt="Allanis com Travis Scott" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Nos bastidores com Travis Scott 🎤🇧🇷 #WorldCup</span>
+          </div>
+          <div class="celeb-badge">🔥 Viral</div>
+        </div>
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_cazetv.jpeg" alt="Allanis na Caze TV" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Ao vivo na Caze TV cobrindo o Brasil 📺🟡 #CazeCopa</span>
+          </div>
+          <div class="celeb-badge">📺 TV</div>
+        </div>
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_mascote.jpeg" alt="Allanis com Canarinho" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Com o Canarinho! 💛 Meu mascote favorito da Copa ðŸ¦</span>
+          </div>
+          <div class="celeb-badge">ðŸ¦ Copa</div>
+        </div>
+
+      </div>
+
+      <div class="celeb-bottom reveal">
+        <div class="celeb-bottom-pill">
+          <span style="font-size:1.3rem;">🤯</span>
+          <div>
+            <strong style="color:var(--white); display:block; font-size:0.95rem;">100% gerado por IA — nenhum encontro real aconteceu</strong>
+            <span style="color:var(--muted2); font-size:0.83rem;">A sua influencer pode aparecer ao lado de qualquer pessoa, em qualquer evento, no mundo inteiro</span>
+          </div>
+        </div>
+        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20as%20fotos%20com%20celebridades%20e%20quero%20saber%20mais%20sobre%20a%20influencer%20IA." target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap; font-size:0.88rem; padding:0.75rem 1.5rem; flex-shrink:0;">
+          Quero para minha marca →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE VIDEO: ROTA FLASH -->
+  <section id="case-video">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem;">
+        <div class="tag">Case real — Comercial de marca com IA</div>
+        <h2 class="section-h">Rota Flash × Allanis — <span class="g">um comercial gerado 100% por IA</span></h2>
+      </div>
+      <div class="video-case-wrap reveal">
+        <div class="video-wrap">
+          <div class="video-badge">▶ Comercial real</div>
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/rotaflash.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="case-info">
+          <div class="case-chip">✦ Parceria real — startup de logística</div>
+          <h3 style="font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; letter-spacing:-1px; margin-bottom:1rem; line-height:1.15;">Uma startup pagou uma influencer IA para fazer o comercial dela</h3>
+          <p style="color:var(--muted2); line-height:1.75; margin-bottom:2rem;">A Rota Flash precisava de uma porta-voz para divulgar o app nas redes. Em vez de contratar uma influencer real, criou a Allanis Duarte — voz clonada, rosto 100% consistente, vídeo pronto em 48 horas. Custo 10× menor que uma produção tradicional.</p>
+          <div class="case-metrics">
+            <div class="metric"><span class="metric-val">48h</span><div class="metric-label">briefing ao vídeo pronto</div></div>
+            <div class="metric"><span class="metric-val">R$0</span><div class="metric-label">cachê de modelo</div></div>
+            <div class="metric"><span class="metric-val">3</span><div class="metric-label">plataformas publicadas</div></div>
+            <div class="metric"><span class="metric-val">100%</span><div class="metric-label">gerado por IA</div></div>
+          </div>
+          <ul class="check-list">
+            <li><span class="ck">✓</span> Roteiro criado por IA com a linguagem da marca</li>
+            <li><span class="ck">✓</span> Voz clonada da Allanis em português brasileiro</li>
+            <li><span class="ck">✓</span> Rosto e identidade visual 100% consistentes</li>
+            <li><span class="ck">✓</span> Publicado no Instagram, TikTok e Facebook automaticamente</li>
+          </ul>
+          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20case%20da%20Rota%20Flash%20e%20quero%20um%20comercial%20assim%20para%20minha%20marca." target="_blank" rel="noopener" class="btn-primary" style="margin-top:1.5rem; display:inline-flex;">
+            <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+            Quero um comercial assim
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="case-bg" id="portfolio-old" style="display:none;">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem;">
+        <div class="tag">Portfólio — Caso real</div>
+        <h2 class="section-h">Allanis Duarte — <span class="g">criada do zero por nós</span></h2>
+      </div>
+      <div class="case-wrap">
+        <div class="case-gallery reveal">
+          <img class="img-main" src="assets/images/allanis_case_03.jpg" alt="Allanis Duarte — Zeira23 Studio" />
+          <img class="img-sm" src="assets/images/allanis_case_01.png" alt="Allanis — identidade visual" />
+          <img class="img-sm" src="assets/images/allanis_case_02.png" alt="Allanis — cenário externo" />
+        </div>
+        <div class="case-info reveal" style="transition-delay:0.15s">
+          <div class="case-chip">✦ Case completo</div>
+          <h3>Influencer IA criada do zero para uma startup de logística</h3>
+          <p>A Allanis Duarte é uma influencer 100% gerada por inteligência artificial, desenvolvida pela Zeira23 Studio. Identidade visual consistente, voz clonada em português brasileiro e conteúdo automatizado nas 3 principais redes sociais — sem uma única pessoa por trás do personagem.</p>
+          <div class="case-metrics">
+            <div class="metric">
+              <span class="metric-val">3</span>
+              <div class="metric-label">plataformas ativas</div>
+            </div>
+            <div class="metric">
+              <span class="metric-val">7 dias</span>
+              <div class="metric-label">do briefing ao ar</div>
+            </div>
+            <div class="metric">
+              <span class="metric-val">100%</span>
+              <div class="metric-label">postagem automática</div>
+            </div>
+            <div class="metric">
+              <span class="metric-val">R$0</span>
+              <div class="metric-label">gasto com influencer</div>
+            </div>
+          </div>
+          <ul class="check-list">
+            <li><span class="ck">✓</span> Identidade facial e visual consistente em todos os conteúdos</li>
+            <li><span class="ck">✓</span> Voz clonada em português brasileiro para todos os vídeos</li>
+            <li><span class="ck">✓</span> Postagem automática no Instagram, Facebook e TikTok</li>
+            <li><span class="ck">✓</span> Calendário editorial mensal com fotos, reels e legendas</li>
+            <li><span class="ck">✓</span> Estratégia de crescimento orientada por dados reais</li>
+          </ul>
+          <a href="https://www.instagram.com/allanisduarte/" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex; margin-top:0.5rem;">
+            Ver Allanis no Instagram →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="planos">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
+        <div class="tag">Investimento</div>
+        <h2 class="section-h">Planos <span class="g">sem complicação</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Sem contrato longo. Sem taxa surpresa. Você paga pelo que precisa e para quando quiser.</p>
+      </div>
+      <div class="scarcity-bar reveal">
+        <div class="scarcity-dot"></div>
+        Apenas <span class="hl">2 vagas disponíveis</span> em julho · Clientes em lista de espera já aguardam
+      </div>
+      <div class="plans-grid">
+
+        <div class="plan reveal">
+          <div class="plan-name">Gestão IA</div>
+          <div class="plan-price">R$1.500 <sub>/mês</sub></div>
+          <div class="plan-period">Conteúdo com IA para quem já tem perfil</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-items">
+            <li><span class="ico">✦</span> 20 conteúdos mensais (fotos, reels e legendas)</li>
+            <li><span class="ico">✦</span> Calendário editorial mensal</li>
+            <li><span class="ico">✦</span> Postagem automática configurada</li>
+            <li><span class="ico">✦</span> Relatório mensal de resultados</li>
+            <li><span class="ico">✦</span> Suporte via WhatsApp</li>
+          </ul>
+          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Gest%C3%A3o%20IA%20da%20Zeira23%20Studio." target="_blank" rel="noopener" class="btn-plan btn-plan-outline">Falar no WhatsApp</a>
+        </div>
+
+        <div class="plan hot reveal" style="transition-delay:0.1s">
+          <div class="plan-top-badge">✦ Mais completo</div>
+          <div class="plan-name">Influencer IA</div>
+          <div class="plan-price">R$2.500 <sub>/mês</sub></div>
+          <div class="plan-period">Personagem exclusivo + gestão completa</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-items">
+            <li><span class="ico">✦</span> Criação do personagem exclusivo da marca</li>
+            <li><span class="ico">✦</span> Identidade visual única e voz clonada</li>
+            <li><span class="ico">✦</span> 30 conteúdos personalizados por mês</li>
+            <li><span class="ico">✦</span> Postagem automática em 3 plataformas</li>
+            <li><span class="ico">✦</span> Estratégia editorial + calendário mensal</li>
+            <li><span class="ico">✦</span> Relatório semanal de crescimento</li>
+            <li><span class="ico">✦</span> Suporte prioritário via WhatsApp</li>
+          </ul>
+          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20Influencer%20IA%20da%20Zeira23%20Studio." target="_blank" rel="noopener" class="btn-plan btn-plan-grad">Quero esse plano</a>
+        </div>
+
+        <div class="plan reveal" style="transition-delay:0.2s">
+          <div class="plan-name">Setup Único</div>
+          <div class="plan-price">R$500 <sub>único</sub></div>
+          <div class="plan-period">Taxa única de criação e configuração</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-items">
+            <li><span class="ico">✦</span> Criação da identidade do personagem</li>
+            <li><span class="ico">✦</span> Configuração dos perfis nas redes</li>
+            <li><span class="ico">✦</span> Sistema de postagem automática</li>
+            <li><span class="ico">✦</span> Primeiros 5 conteúdos inclusos</li>
+          </ul>
+          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Setup%20da%20Zeira23%20Studio." target="_blank" rel="noopener" class="btn-plan btn-plan-outline">Falar no WhatsApp</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="problema-bg" id="faq">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
+        <div class="tag">Perguntas frequentes</div>
+        <h2 class="section-h">Tudo que você <span class="g">quer saber</span></h2>
+      </div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Meus clientes vão saber que é inteligência artificial?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Não necessariamente. A qualidade visual das nossas influencers IA é indistinguível de uma pessoa real para o olho humano comum. Você decide se quer ser transparente sobre isso ou não — muitos clientes preferem manter discrição, outros usam isso como diferencial inovador da marca.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>É legal usar influencer IA para divulgar meu negócio?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Sim. O personagem é criado do zero, não copia nenhuma pessoa real existente. Não há violação de imagem ou direito autoral. Diversas marcas internacionais já usam avatares e influencers digitais como estratégia oficial de marketing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Preciso ter conta nas redes sociais ou vocês criam tudo?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Criamos tudo do zero — perfil, bio, foto, identidade visual e o sistema de postagem automática. Você só precisa nos dar o briefing do seu negócio. Se já tiver perfil, adaptamos o personagem para ele.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Quanto tempo leva para o personagem estar pronto e postando?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Em média 7 dias corridos da aprovação do briefing até o primeiro post no ar. A identidade visual (rosto, cabelo, estilo) fica pronta em 48h. O restante do prazo é para criar o banco de conteúdo inicial e configurar a automação.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Posso cancelar quando quiser?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>Sim. Não há fidelidade ou multa de cancelamento. Você avisa com 30 dias de antecedência e encerramos sem burocracia. Todo o material produzido durante o contrato fica com você.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>O personagem é exclusivo ou pode ser usado por outro cliente?</span>
+            <span class="faq-arrow">↓</span>
+          </button>
+          <div class="faq-a">
+            <p>100% exclusivo. Cada influencer IA é criada especificamente para uma marca e nunca é reaproveitada ou cedida a outro cliente. O personagem é seu.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2>Pronto para sua <span class="g">influencer IA?</span></h2>
+      <p>Fale com a gente agora pelo WhatsApp. Sem compromisso, sem enrolação. Conta o que seu negócio precisa e mostramos o caminho.</p>
+      <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Zeira23%20Studio%20e%20quero%20saber%20mais%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" class="btn-wpp">
+        <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+        Falar agora no WhatsApp
+      </a>
+      <p class="cta-note">Luis Fernando · Zeira23 Studio · São Paulo, SP</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 <span class="logo">Zeira23 Studio</span> — Todos os direitos reservados · São Paulo, SP</p>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q.open').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
+    }
+
+    // Gallery filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('#galleryGrid .gi').forEach(item => {
+          const cats = item.dataset.cat || '';
+          item.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
+        });
+      });
+    });
+
+    // Count up
+    const counters = document.querySelectorAll('[data-count]');
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = +el.dataset.count;
+        const suffix = el.dataset.suffix || '';
+        let start = 0;
+        const step = Math.ceil(target / 40);
+        const timer = setInterval(() => {
+          start = Math.min(start + step, target);
+          el.textContent = start + suffix;
+          if (start >= target) clearInterval(timer);
+        }, 30);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => cio.observe(el));
+  </script>
+</body>
+</html>
