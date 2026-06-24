@@ -3947,7 +3947,7 @@
 
         <div class="scarcity-dot"></div>
 
-        Apenas <span class="hl">2 vagas disponíveis</span> em julho · Clientes em lista de espera já aguardam
+        Apenas <span class="hl">2 vagas disponíveis</span> em <span id="scarcity-month">julho</span> · Clientes em lista de espera já aguardam
 
       </div>
 
@@ -4318,6 +4318,11 @@
     });
 
 
+
+    // Auto-update scarcity month
+    const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+    const mesEl = document.getElementById('scarcity-month');
+    if (mesEl) mesEl.textContent = meses[new Date().getMonth()];
 
     // Count up
 
