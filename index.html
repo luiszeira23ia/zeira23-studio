@@ -1152,6 +1152,103 @@
     }
     @media (max-width: 900px) { .video-case-wrap { grid-template-columns: 1fr; gap: 2.5rem; } }
 
+    /* CONSISTENCY GRID */
+    .cons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .cons-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/5;
+      cursor: pointer;
+    }
+    .cons-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.55s ease;
+      display: block;
+    }
+    .cons-item:hover img { transform: scale(1.06); }
+    .cons-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 25%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .cons-item:hover .cons-overlay { opacity: 1; }
+    .cons-badge {
+      position: absolute;
+      top: 0.85rem; left: 0.85rem;
+      background: rgba(168,85,247,0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.22rem 0.75rem;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .cons-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .cons-label {
+      position: absolute;
+      bottom: 1rem; left: 1rem; right: 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .cons-item:hover .cons-label { opacity: 1; }
+    .cons-proof {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cons-proof-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: 50px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .cons-proof-pill .ck2 {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    @media (max-width: 700px) {
+      .cons-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     /* SVG ICONS */
     .ico-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
@@ -1192,6 +1289,7 @@
     <div class="nav-logo">Zeira23 Studio</div>
     <ul class="nav-links">
       <li><a href="#como">Como funciona</a></li>
+      <li><a href="#consistencia">Consistência</a></li>
       <li><a href="#nichos">Nichos</a></li>
       <li><a href="#portfolio">Portfólio</a></li>
       <li><a href="#planos">Planos</a></li>
@@ -1325,6 +1423,70 @@
           <h3>Postagem automática</h3>
           <p>Configuramos o sistema para publicar nos horários certos. Você não precisa fazer absolutamente nada.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSISTÊNCIA -->
+  <section class="problema-bg" id="consistencia">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
+        <div class="tag">O diferencial que muda tudo</div>
+        <h2 class="section-h">Um rosto. <span class="g">Infinitos cenários.</span></h2>
+        <p class="section-sub" style="margin:0 auto;">A identidade visual nunca muda — independente do nicho, do cenário ou do contexto. Passe o mouse nas fotos abaixo e veja: é sempre a mesma influencer. Isso é o que separa a Zeira23 de qualquer outra solução do mercado.</p>
+      </div>
+
+      <div class="cons-grid reveal">
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_fitness.jpeg" alt="Academia" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">💪 Academia · São Paulo, SP</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_gastro.jpeg" alt="Sushi" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">🍣 Gastronomia · Omakase, Vila Madalena</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_auto.jpeg" alt="Red Bull F1" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">🏎️ Patrocínio · Red Bull Racing, F1</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_moda.jpeg" alt="Moda SP" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">👗 Moda · Editorial, Centro SP</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_travel.jpeg" alt="Piscina Rio" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">✈️ Viagem · Hotel de Luxo, Rio de Janeiro</div>
+        </div>
+
+        <div class="cons-item">
+          <img src="assets/images/nicho_eventos.jpeg" alt="Camarote VIP" />
+          <div class="cons-badge">Allanis ✓</div>
+          <div class="cons-overlay"></div>
+          <div class="cons-label">🎤 Eventos · Camarote VIP, São Paulo</div>
+        </div>
+
+      </div>
+
+      <div class="cons-proof reveal">
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Mesmo rosto em 100% dos conteúdos</div>
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Mesma voz clonada em todos os vídeos</div>
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Qualquer cenário, qualquer nicho</div>
+        <div class="cons-proof-pill"><span class="ck2">✓</span> Sem fotógrafo, sem modelo, sem cachê</div>
       </div>
     </div>
   </section>
