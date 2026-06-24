@@ -3943,12 +3943,50 @@
 
       </div>
 
-      <div class="scarcity-bar reveal">
+      <!-- PAINEL DE STATUS -->
+      <div class="reveal" style="margin-bottom:2rem;">
 
-        <div class="scarcity-dot"></div>
+        <div style="background:var(--card);border:1px solid var(--border2);border-radius:24px;padding:2rem 2.5rem;max-width:680px;margin:0 auto;">
 
-        Apenas <span class="hl">2 vagas disponíveis</span> em <span id="scarcity-month">julho</span> · Clientes em lista de espera já aguardam
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:0.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);">Capacidade — <span id="scarcity-month2">julho</span> 2026</span>
+            <span style="font-size:0.72rem;font-weight:700;color:var(--green);background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:50px;padding:0.2rem 0.75rem;">● Aceitando projetos</span>
+          </div>
 
+          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;">
+
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#a855f7;flex-shrink:0;"></span>
+              <span style="font-size:0.88rem;color:var(--text);flex:1;">Allanis Duarte — <span style="color:var(--muted2);">Influencer IA · Em operação</span></span>
+              <span style="font-size:0.7rem;font-weight:700;color:#a855f7;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);border-radius:50px;padding:0.2rem 0.65rem;white-space:nowrap;">Autorizado divulgar</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#a855f7;flex-shrink:0;"></span>
+              <span style="font-size:0.88rem;color:var(--text);flex:1;">Rota Flash — <span style="color:var(--muted2);">Comercial IA · Publicado</span></span>
+              <span style="font-size:0.7rem;font-weight:700;color:#a855f7;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);border-radius:50px;padding:0.2rem 0.65rem;white-space:nowrap;">Autorizado divulgar</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ec4899;flex-shrink:0;"></span>
+              <span style="font-size:0.88rem;color:var(--text);flex:1;">Cliente confidencial — <span style="color:var(--muted2);">Influencer IA · Em produção</span></span>
+              <span style="font-size:0.7rem;font-weight:700;color:var(--muted2);background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:50px;padding:0.2rem 0.65rem;white-space:nowrap;">🔒 NDA</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid var(--border2);flex-shrink:0;"></span>
+              <span style="font-size:0.88rem;color:var(--muted);flex:1;">Vaga disponível</span>
+              <span style="font-size:0.7rem;font-weight:700;color:var(--green);background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:50px;padding:0.2rem 0.65rem;white-space:nowrap;">Disponível</span>
+            </div>
+
+          </div>
+
+          <div style="border-top:1px solid var(--border);padding-top:1rem;display:flex;align-items:flex-start;gap:0.6rem;">
+            <span style="color:var(--muted2);font-size:1rem;flex-shrink:0;margin-top:1px;">🔒</span>
+            <p style="font-size:0.8rem;color:var(--muted2);line-height:1.6;margin:0;">Clientes podem optar por manter o projeto em <strong style="color:var(--text);">total sigilo</strong>. Os cases acima foram divulgados com autorização expressa. O seu projeto nunca será compartilhado sem sua permissão.</p>
+          </div>
+
+        </div>
       </div>
 
       <div class="plans-grid">
@@ -4323,6 +4361,8 @@
     const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
     const mesEl = document.getElementById('scarcity-month');
     if (mesEl) mesEl.textContent = meses[new Date().getMonth()];
+    const mesEl2 = document.getElementById('scarcity-month2');
+    if (mesEl2) mesEl2.textContent = meses[new Date().getMonth()];
 
     // Count up
 
