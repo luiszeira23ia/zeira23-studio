@@ -4433,6 +4433,26 @@
               <textarea id="bf-obs" rows="4" placeholder="Fale livremente — o que você quer comunicar, o tom da marca, alguma ideia que já tem em mente..." style="width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:0.75rem 1rem;color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;resize:vertical;line-height:1.6;transition:border 0.2s;" onfocus="this.style.borderColor='var(--p1)'" onblur="this.style.borderColor='var(--border2)'"></textarea>
             </div>
 
+            <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:1.2rem 1.5rem;">
+              <label style="display:block;font-size:0.78rem;font-weight:700;color:var(--muted2);margin-bottom:0.9rem;text-transform:uppercase;letter-spacing:1px;">E-mail da marca — como prefere?</label>
+              <div style="display:flex;flex-direction:column;gap:0.65rem;">
+                <label style="display:flex;align-items:flex-start;gap:0.75rem;cursor:pointer;padding:0.75rem 1rem;border-radius:12px;border:1px solid var(--border2);transition:border 0.2s;" onmouseover="this.style.borderColor='#a855f7'" onmouseout="this.style.borderColor=''">
+                  <input type="radio" name="bf-email-op" id="bf-email-criar" value="Prefiro que a Zeira23 Studio crie o e-mail da marca" style="margin-top:2px;accent-color:#a855f7;flex-shrink:0;" />
+                  <div>
+                    <span style="font-size:0.9rem;font-weight:700;color:var(--text);display:block;">Criar e-mail novo para a marca</span>
+                    <span style="font-size:0.8rem;color:var(--muted2);">A Zeira23 Studio cria e configura o e-mail profissional da sua marca.</span>
+                  </div>
+                </label>
+                <label style="display:flex;align-items:flex-start;gap:0.75rem;cursor:pointer;padding:0.75rem 1rem;border-radius:12px;border:1px solid var(--border2);transition:border 0.2s;" onmouseover="this.style.borderColor='#a855f7'" onmouseout="this.style.borderColor=''">
+                  <input type="radio" name="bf-email-op" id="bf-email-enviar" value="Já tenho e-mail — vou compartilhar o acesso" style="margin-top:2px;accent-color:#a855f7;flex-shrink:0;" />
+                  <div>
+                    <span style="font-size:0.9rem;font-weight:700;color:var(--text);display:block;">Já tenho e-mail — vou compartilhar o acesso</span>
+                    <span style="font-size:0.8rem;color:var(--muted2);">Você nos envia o e-mail e senha após a contratação para configurarmos tudo.</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
             <div style="background:rgba(168,85,247,0.06);border:1px solid rgba(168,85,247,0.2);border-radius:16px;padding:1.2rem 1.5rem;">
               <label style="display:flex;align-items:flex-start;gap:0.85rem;cursor:pointer;">
                 <input type="checkbox" id="bf-aceite" style="width:18px;height:18px;margin-top:2px;accent-color:#a855f7;flex-shrink:0;cursor:pointer;" />
@@ -4587,14 +4607,20 @@
       const plano = document.getElementById('bf-plano').value;
       const obs = document.getElementById('bf-obs').value.trim();
       const aceite = document.getElementById('bf-aceite').checked;
+      const emailOp = document.querySelector('input[name="bf-email-op"]:checked');
 
       if (!nome || !negocio || !publico || !personalidade) {
         alert('Por favor preencha pelo menos: nome, negócio, público-alvo e personalidade da influencer.');
         return;
       }
 
+      if (!emailOp) {
+        alert('Por favor selecione a opção de e-mail: criar novo ou compartilhar o acesso existente.');
+        return;
+      }
+
       if (!aceite) {
-        alert('Por favor confirme que está ciente sobre o compartilhamento de acesso para criação dos perfis e site.');
+        alert('Por favor confirme que está ciente e autoriza o acesso às contas da marca para prestação do serviço.');
         return;
       }
 
@@ -4610,6 +4636,7 @@
         plano ? `💼 *Plano de interesse:* ${plano}` : null,
         obs ? `📝 *Mais detalhes:* ${obs}` : null,
         '',
+        `📧 *E-mail da marca:* ${emailOp.value}`,
         '✅ *Autorizo a Zeira23 Studio a utilizar os acessos às contas da minha marca para criar, publicar e gerenciar conteúdo em meu nome enquanto o serviço estiver ativo.*',
       ].filter(Boolean).join('\n');
 
