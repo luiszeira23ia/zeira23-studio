@@ -869,6 +869,98 @@
       .nicho-grid { grid-template-columns: 1fr; }
     }
 
+    /* NICHOS VISUAL BENTO */
+    .nv-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 290px;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .nv-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .nv-card.span2 { grid-column: span 2; }
+    .nv-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .nv-card:hover img { transform: scale(1.07); }
+    .nv-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 35%, rgba(0,0,0,0.1) 70%);
+    }
+    .nv-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+    }
+    .nv-niche {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--p1);
+      margin-bottom: 0.35rem;
+    }
+    .nv-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+    .nv-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.55;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, margin 0.3s;
+    }
+    .nv-card:hover .nv-desc { max-height: 80px; margin-top: 0.5rem; }
+    .nv-tags {
+      display: flex; gap: 0.4rem; flex-wrap: wrap;
+      margin-top: 0.7rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .nv-card:hover .nv-tags { opacity: 1; }
+    .nv-tag {
+      font-size: 0.62rem; font-weight: 700;
+      background: rgba(168,85,247,0.35);
+      border: 1px solid rgba(168,85,247,0.5);
+      color: #e8d5ff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+    }
+    .nv-cta-row {
+      background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(236,72,153,0.06));
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nv-cta-row p { color: var(--muted2); font-size: 0.9rem; margin: 0; }
+    .nv-cta-row strong { color: var(--white); }
+    @media (max-width: 900px) {
+      .nv-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
+      .nv-card.span2 { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .nv-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+    }
+
     /* FAQ */
     .faq-list { max-width: 780px; margin: 0 auto; }
 
@@ -935,6 +1027,130 @@
       flex-shrink: 0;
     }
     .scarcity-bar span.hl { color: #f97316; font-weight: 800; }
+
+    /* GALLERY FILTERS */
+    .gallery-filters {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid var(--border2);
+      background: transparent;
+      color: var(--muted2);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .filter-btn:hover { color: var(--white); border-color: rgba(168,85,247,0.4); }
+    .filter-btn.active { background: var(--grad); border-color: transparent; color: #fff; box-shadow: 0 0 20px rgba(168,85,247,0.3); }
+
+    /* GALLERY GRID */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .gi {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 3/4;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .gi.hidden { display: none; }
+    .gi img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .gi:hover img { transform: scale(1.07); }
+    .gi-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gi:hover .gi-overlay { opacity: 1; }
+    .gi-tag {
+      position: absolute;
+      bottom: 1rem; left: 1rem;
+      background: rgba(5,5,7,0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 50px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+    .gi:hover .gi-tag { opacity: 1; }
+    .gi-ai {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      background: rgba(168,85,247,0.88);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .gallery-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px)  { .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; } }
+
+    /* VIDEO CASE */
+    .video-case-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .video-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      box-shadow: 0 0 60px rgba(168,85,247,0.12);
+    }
+    .video-wrap video { width: 100%; display: block; }
+    .video-badge {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: rgba(168,85,247,0.92);
+      border-radius: 50px;
+      padding: 0.25rem 0.85rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    @media (max-width: 900px) { .video-case-wrap { grid-template-columns: 1fr; gap: 2.5rem; } }
 
     /* SVG ICONS */
     .ico-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
@@ -1009,7 +1225,7 @@
         <div class="hero-img-wrap">
           <div class="hero-img-glow"></div>
           <div class="hero-img-border">
-            <img src="assets/images/allanis_hero.jpg" alt="Allanis Duarte — Influencer IA criada pela Zeira23 Studio" />
+            <img src="assets/images/allanis_hero.jpeg" alt="Allanis Duarte — Influencer IA criada pela Zeira23 Studio" style="object-position: center top;" />
           </div>
           <div class="float-card float-card-1">
             <div class="float-icon">🤖</div>
@@ -1122,86 +1338,236 @@
         <p class="section-sub" style="margin:0 auto 1rem;">O personagem é desenvolvido com a identidade, estilo e linguagem que o seu público já consome. A fórmula é simples: <strong style="color:var(--text)">identidade autêntica + consistência + automação</strong> = crescimento orgânico.</p>
       </div>
 
-      <div class="nicho-grid reveal">
+      <div class="nv-grid reveal">
 
-        <div class="nicho-card">
-          <div class="nicho-icon">🏋️</div>
-          <div class="nicho-body">
-            <h3>Fitness & Personal</h3>
-            <p>Influencer que treina, motiva e vende planos, suplementos ou aulas. Engajamento altíssimo no nicho.</p>
-            <div class="nicho-tags"><span>Instagram</span><span>TikTok</span></div>
+        <div class="nv-card span2">
+          <img src="assets/images/nicho_auto.jpeg" alt="Automobilismo Red Bull F1" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">🏎️ Automobilismo</div>
+            <div class="nv-title">Patrocínio & Eventos de Alto Impacto</div>
+            <div class="nv-desc">Influencer IA dentro do pit lane da Red Bull Racing. Contratos de patrocínio que custariam R$50k+ — com IA, R$0 de cachê.</div>
+            <div class="nv-tags"><span class="nv-tag">F1</span><span class="nv-tag">Patrocínio</span><span class="nv-tag">Instagram</span></div>
           </div>
         </div>
 
-        <div class="nicho-card">
-          <div class="nicho-icon">👩‍🍳</div>
-          <div class="nicho-body">
-            <h3>Gastronomia & Delivery</h3>
-            <p>Chef ou foodie que mostra bastidores, receitas e lança promoções. Converte direto para pedidos.</p>
-            <div class="nicho-tags"><span>Instagram</span><span>Facebook</span></div>
+        <div class="nv-card">
+          <img src="assets/images/nicho_gastro.jpeg" alt="Gastronomia Sushi" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">🍣 Gastronomia</div>
+            <div class="nv-title">Restaurantes & Delivery</div>
+            <div class="nv-desc">Foodie que converte direto para reservas e pedidos. Restaurante, bar, delivery — qualquer formato.</div>
+            <div class="nv-tags"><span class="nv-tag">Instagram</span><span class="nv-tag">TikTok</span></div>
           </div>
         </div>
 
-        <div class="nicho-card">
-          <div class="nicho-icon">💄</div>
-          <div class="nicho-body">
-            <h3>Beleza & Estética</h3>
-            <p>Especialista em skincare, cabelo ou unhas que demonstra antes/depois e promove agendamentos.</p>
-            <div class="nicho-tags"><span>Instagram</span><span>TikTok</span></div>
+        <div class="nv-card">
+          <img src="assets/images/nicho_fitness.jpeg" alt="Fitness Academia" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">💪 Fitness</div>
+            <div class="nv-title">Academia & Personal</div>
+            <div class="nv-desc">Motiva, treina e vende — planos, suplementos ou aulas. Engajamento altíssimo no nicho fitness.</div>
+            <div class="nv-tags"><span class="nv-tag">Reels</span><span class="nv-tag">TikTok</span></div>
           </div>
         </div>
 
-        <div class="nicho-card">
-          <div class="nicho-icon">🏡</div>
-          <div class="nicho-body">
-            <h3>Imóveis & Construção</h3>
-            <p>Corretora ou arquiteta que apresenta imóveis, dá dicas de decoração e gera leads qualificados.</p>
-            <div class="nicho-tags"><span>Instagram</span><span>YouTube</span></div>
+        <div class="nv-card">
+          <img src="assets/images/nicho_lifestyle.jpeg" alt="Lifestyle Rio" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">🌆 Lifestyle</div>
+            <div class="nv-title">Viagem & Luxo</div>
+            <div class="nv-desc">Influencer de lifestyle que frequenta os melhores lugares. Rooftop no Rio, resorts 5 estrelas, experiências exclusivas.</div>
+            <div class="nv-tags"><span class="nv-tag">Travel</span><span class="nv-tag">Luxo</span></div>
           </div>
         </div>
 
-        <div class="nicho-card">
-          <div class="nicho-icon">🏍️</div>
-          <div class="nicho-body">
-            <h3>Motociclismo & Lifestyle</h3>
-            <p>Motociclista que vive aventuras na estrada — contraste visual poderoso que para o scroll na hora.</p>
-            <div class="nicho-tags"><span>TikTok</span><span>Instagram</span></div>
+        <div class="nv-card span2">
+          <img src="assets/images/nicho_moda.jpeg" alt="Moda São Paulo" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">👗 Moda & Fashion</div>
+            <div class="nv-title">Editorial, Looks & Coleções</div>
+            <div class="nv-desc">Qualquer estilo, qualquer marca. Do streetwear ao alto luxo — a influencer veste o que você precisar, onde você precisar.</div>
+            <div class="nv-tags"><span class="nv-tag">Editorial</span><span class="nv-tag">Lookbook</span><span class="nv-tag">Instagram</span></div>
           </div>
         </div>
 
-        <div class="nicho-card">
-          <div class="nicho-icon">🐾</div>
-          <div class="nicho-body">
-            <h3>Pet & Veterinária</h3>
-            <p>Amante de animais que educa, emociona e promove produtos e consultas. Audiência extremamente fiel.</p>
-            <div class="nicho-tags"><span>Instagram</span><span>TikTok</span></div>
+        <div class="nv-card">
+          <img src="assets/images/nicho_beleza.jpeg" alt="Beleza Wellness" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">💆 Beleza & Wellness</div>
+            <div class="nv-title">Skincare, Spa & Estética</div>
+            <div class="nv-desc">Skincare, spa, estética e bem-estar. Produto na mão, antes e depois — conteúdo que gera agendamentos.</div>
+            <div class="nv-tags"><span class="nv-tag">Skincare</span><span class="nv-tag">Estética</span></div>
           </div>
         </div>
 
-        <div class="nicho-card">
-          <div class="nicho-icon">📚</div>
-          <div class="nicho-body">
-            <h3>Educação & Cursos</h3>
-            <p>Professora ou mentora que entrega valor gratuito e converte para matrículas e produtos digitais.</p>
-            <div class="nicho-tags"><span>Instagram</span><span>YouTube</span></div>
+        <div class="nv-card">
+          <img src="assets/images/nicho_eventos.jpeg" alt="Eventos VIP" />
+          <div class="nv-overlay"></div>
+          <div class="nv-content">
+            <div class="nv-niche">🎤 Eventos</div>
+            <div class="nv-title">Shows, Festas & Camarote</div>
+            <div class="nv-desc">Camarote VIP, shows e festas. Acesso a qualquer evento — sem ingresso, sem cachet de presença.</div>
+            <div class="nv-tags"><span class="nv-tag">Eventos</span><span class="nv-tag">Stories</span></div>
           </div>
         </div>
 
-        <div class="nicho-card nicho-card-plus">
-          <div class="nicho-icon">✦</div>
-          <div class="nicho-body">
-            <h3>O seu nicho</h3>
-            <p>Qualquer segmento, qualquer identidade. Conte para a gente o que sua marca precisa.</p>
-            <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Quero%20criar%20uma%20influencer%20IA%20para%20o%20meu%20nicho." target="_blank" rel="noopener" class="nicho-cta">Falar agora →</a>
-          </div>
-        </div>
+      </div>
 
+      <div class="nv-cta-row reveal">
+        <p><strong>Não encontrou seu segmento?</strong> Criamos para qualquer nicho — educação, imóveis, pet, saúde, tecnologia, varejo e muito mais.</p>
+        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Quero%20criar%20uma%20influencer%20IA%20para%20o%20meu%20nicho." target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap; font-size:0.88rem; padding:0.75rem 1.5rem;">
+          Falar sobre meu nicho →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO FILTRADO -->
+  <section class="case-bg" id="portfolio">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:2rem;">
+        <div class="tag">Portfolio — 100% gerado por IA</div>
+        <h2 class="section-h">Escolha um nicho e <span class="g">veja o resultado</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Clique em qualquer categoria. Cada imagem foi criada do zero com inteligência artificial — sem fotografia real, sem modelo contratada.</p>
+      </div>
+
+      <div class="gallery-filters reveal">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="fitness">💪 Fitness</button>
+        <button class="filter-btn" data-filter="gastronomia">🍽️ Gastronomia</button>
+        <button class="filter-btn" data-filter="moda">👗 Moda</button>
+        <button class="filter-btn" data-filter="lifestyle">🌆 Lifestyle</button>
+        <button class="filter-btn" data-filter="viagem">✈️ Viagem</button>
+        <button class="filter-btn" data-filter="automobilismo">🏎️ Automobilismo</button>
+        <button class="filter-btn" data-filter="eventos">🎤 Eventos</button>
+        <button class="filter-btn" data-filter="beleza">💆 Beleza</button>
+      </div>
+
+      <div class="gallery-grid reveal" id="galleryGrid">
+        <div class="gi" data-cat="automobilismo">
+          <img src="assets/images/nicho_auto.jpeg" alt="Automobilismo" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🏎️ Automobilismo · Red Bull Racing</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="lifestyle">
+          <img src="assets/images/nicho_lifestyle.jpeg" alt="Lifestyle Rio" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🌆 Lifestyle · Rio de Janeiro</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="viagem">
+          <img src="assets/images/nicho_travel.jpeg" alt="Viagem Luxo" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">✈️ Viagem · Hotel de Luxo, Rio</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="moda">
+          <img src="assets/images/nicho_moda.jpeg" alt="Moda SP" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">👗 Moda · São Paulo</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="fitness">
+          <img src="assets/images/nicho_fitness.jpeg" alt="Fitness Academia" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💪 Fitness · Academia SP</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="fitness">
+          <img src="assets/images/allanis_case_sm1.jpeg" alt="Fitness Pós-treino" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💪 Fitness · Pós-treino</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="gastronomia">
+          <img src="assets/images/nicho_gastro.jpeg" alt="Gastronomia Sushi" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🍣 Gastronomia · Omakase</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="gastronomia">
+          <img src="assets/images/nicho_cafe.jpeg" alt="Padaria Café" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">☕ Gastronomia · Café da Manhã</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="eventos">
+          <img src="assets/images/nicho_eventos.jpeg" alt="Eventos VIP" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🎤 Eventos · Camarote VIP</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="beleza">
+          <img src="assets/images/nicho_beleza.jpeg" alt="Beleza Wellness" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💆 Beleza · Spa Luxo</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="lifestyle viagem">
+          <img src="assets/images/allanis_hero.jpeg" alt="Lifestyle Viagem" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">🌅 Lifestyle · Praia do Espelho, BA</div>
+          <div class="gi-ai">IA</div>
+        </div>
+        <div class="gi" data-cat="moda lifestyle">
+          <img src="assets/images/nicho_corporativo.jpeg" alt="Corporativo" loading="lazy" />
+          <div class="gi-overlay"></div>
+          <div class="gi-tag">💼 Corporativo · São Paulo</div>
+          <div class="gi-ai">IA</div>
+        </div>
+      </div>
+      <p class="gallery-note">Passe o mouse sobre as fotos · Todas geradas 100% por IA · Nenhuma pessoa real envolvida</p>
+    </div>
+  </section>
+
+  <!-- CASE VIDEO: ROTA FLASH -->
+  <section id="case-video">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem;">
+        <div class="tag">Case real — Comercial de marca com IA</div>
+        <h2 class="section-h">Rota Flash × Allanis — <span class="g">um comercial gerado 100% por IA</span></h2>
+      </div>
+      <div class="video-case-wrap reveal">
+        <div class="video-wrap">
+          <div class="video-badge">▶ Comercial real</div>
+          <video autoplay muted loop playsinline>
+            <source src="assets/videos/rotaflash.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="case-info">
+          <div class="case-chip">✦ Parceria real — startup de logística</div>
+          <h3 style="font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; letter-spacing:-1px; margin-bottom:1rem; line-height:1.15;">Uma startup pagou uma influencer IA para fazer o comercial dela</h3>
+          <p style="color:var(--muted2); line-height:1.75; margin-bottom:2rem;">A Rota Flash precisava de uma porta-voz para divulgar o app nas redes. Em vez de contratar uma influencer real, criou a Allanis Duarte — voz clonada, rosto 100% consistente, vídeo pronto em 48 horas. Custo 10× menor que uma produção tradicional.</p>
+          <div class="case-metrics">
+            <div class="metric"><span class="metric-val">48h</span><div class="metric-label">briefing ao vídeo pronto</div></div>
+            <div class="metric"><span class="metric-val">R$0</span><div class="metric-label">cachê de modelo</div></div>
+            <div class="metric"><span class="metric-val">3</span><div class="metric-label">plataformas publicadas</div></div>
+            <div class="metric"><span class="metric-val">100%</span><div class="metric-label">gerado por IA</div></div>
+          </div>
+          <ul class="check-list">
+            <li><span class="ck">✓</span> Roteiro criado por IA com a linguagem da marca</li>
+            <li><span class="ck">✓</span> Voz clonada da Allanis em português brasileiro</li>
+            <li><span class="ck">✓</span> Rosto e identidade visual 100% consistentes</li>
+            <li><span class="ck">✓</span> Publicado no Instagram, TikTok e Facebook automaticamente</li>
+          </ul>
+          <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20o%20case%20da%20Rota%20Flash%20e%20quero%20um%20comercial%20assim%20para%20minha%20marca." target="_blank" rel="noopener" class="btn-primary" style="margin-top:1.5rem; display:inline-flex;">
+            <svg class="ico-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.114.554 4.1 1.524 5.82L.057 23.25a.75.75 0 0 0 .916.916l5.43-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.717 9.717 0 0 1-4.953-1.355l-.355-.21-3.676.993.992-3.616-.23-.373A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+            Quero um comercial assim
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CASE STUDY -->
-  <section class="case-bg" id="portfolio">
+  <section class="case-bg" id="portfolio-old" style="display:none;">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
         <div class="tag">Portfólio — Caso real</div>
@@ -1432,6 +1798,19 @@
         answer.classList.add('open');
       }
     }
+
+    // Gallery filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('#galleryGrid .gi').forEach(item => {
+          const cats = item.dataset.cat || '';
+          item.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
+        });
+      });
+    });
 
     // Count up
     const counters = document.querySelectorAll('[data-count]');
