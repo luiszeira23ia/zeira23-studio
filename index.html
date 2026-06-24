@@ -1249,6 +1249,85 @@
       .cons-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* CELEBRIDADES */
+    .celeb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .celeb-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      background: #000;
+    }
+    .celeb-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.92);
+    }
+    .celeb-card:hover img { transform: scale(1.05); filter: brightness(1); }
+    .celeb-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 30%, rgba(0,0,0,0.05) 65%);
+    }
+    .celeb-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem 1rem 1.1rem;
+    }
+    .celeb-handle {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--p1);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.5px;
+    }
+    .celeb-text {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.45;
+    }
+    .celeb-badge {
+      position: absolute;
+      top: 0.75rem; right: 0.75rem;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .celeb-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, rgba(168,85,247,0.07), rgba(236,72,153,0.05));
+      border: 1px solid rgba(168,85,247,0.2);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+    }
+    .celeb-bottom-pill {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    @media (max-width: 900px) { .celeb-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px)  { .celeb-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; } }
+
     /* SVG ICONS */
     .ico-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
@@ -1723,6 +1802,74 @@
         </div>
       </div>
       <p class="gallery-note">Passe o mouse sobre as fotos · Todas geradas 100% por IA · Nenhuma pessoa real envolvida</p>
+    </div>
+  </section>
+
+  <!-- CELEBRIDADES -->
+  <section id="celebridades" style="background:var(--bg);">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:2.5rem;">
+        <div class="tag">Ela vai onde a marca precisar</div>
+        <h2 class="section-h">Selfie com Messi. Estúdio da Caze. <span class="g">Sem cachê. Sem agenda.</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Com IA, a sua influencer pode aparecer com qualquer celebridade, em qualquer evento, em qualquer lugar do mundo. Isso não é edição — é o poder real do que fazemos.</p>
+      </div>
+
+      <div class="celeb-grid reveal">
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_messi.jpeg" alt="Allanis com Messi" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Selfie com o GOAT na Copa 🐐⚽ #FIFAWorldCup2026</span>
+          </div>
+          <div class="celeb-badge">🔥 Viral</div>
+        </div>
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_travis.jpeg" alt="Allanis com Travis Scott" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Nos bastidores com Travis Scott 🎤🇧🇷 #WorldCup</span>
+          </div>
+          <div class="celeb-badge">🔥 Viral</div>
+        </div>
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_cazetv.jpeg" alt="Allanis na Caze TV" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Ao vivo na Caze TV cobrindo o Brasil 📺🟡 #CazeCopa</span>
+          </div>
+          <div class="celeb-badge">📺 TV</div>
+        </div>
+
+        <div class="celeb-card">
+          <img src="assets/images/celeb_mascote.jpeg" alt="Allanis com Canarinho" loading="lazy" />
+          <div class="celeb-overlay"></div>
+          <div class="celeb-caption">
+            <span class="celeb-handle">@allanisduarte</span>
+            <span class="celeb-text">Com o Canarinho! 💛 Meu mascote favorito da Copa 🐦</span>
+          </div>
+          <div class="celeb-badge">🐦 Copa</div>
+        </div>
+
+      </div>
+
+      <div class="celeb-bottom reveal">
+        <div class="celeb-bottom-pill">
+          <span style="font-size:1.3rem;">🤯</span>
+          <div>
+            <strong style="color:var(--white); display:block; font-size:0.95rem;">100% gerado por IA — nenhum encontro real aconteceu</strong>
+            <span style="color:var(--muted2); font-size:0.83rem;">A sua influencer pode aparecer ao lado de qualquer pessoa, em qualquer evento, no mundo inteiro</span>
+          </div>
+        </div>
+        <a href="https://wa.me/5511974120291?text=Ol%C3%A1!%20Vi%20as%20fotos%20com%20celebridades%20e%20quero%20saber%20mais%20sobre%20a%20influencer%20IA." target="_blank" rel="noopener" class="btn-primary" style="white-space:nowrap; font-size:0.88rem; padding:0.75rem 1.5rem; flex-shrink:0;">
+          Quero para minha marca →
+        </a>
+      </div>
     </div>
   </section>
 
